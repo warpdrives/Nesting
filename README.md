@@ -17,5 +17,5 @@ or submit [Issues](https://github.com/warpdrives/Nesting/issues/new) and we will
 
 ## License
 
-Nesting is available under the  `Apache-2.0` license. See the LICENSE file for more info.
+Nesting is available under the  `Apache 2.0` license. See the LICENSE file for more info.
 
