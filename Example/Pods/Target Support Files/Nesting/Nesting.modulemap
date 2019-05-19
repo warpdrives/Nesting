@@ -1,0 +1,6 @@
+framework module Nesting {
+  umbrella header "Nesting-umbrella.h"
+
+  export *
+  module * { export * }
+}
