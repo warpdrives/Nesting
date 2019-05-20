@@ -1,6 +1,0 @@
-framework module Pods_Nesting_Tests {
-  umbrella header "Pods-Nesting_Tests-umbrella.h"
-
-  export *
-  module * { export * }
-}
