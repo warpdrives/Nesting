@@ -9,6 +9,12 @@
 
 iOS Nesting viewController
 
+
+## Author
+
+![Shevakuilin](https://github.com/shevakuilin)
+![Burning_git](https://github.com/burning_git)
+
 ## Feedback
 
 If you encounter problems during use, please contact: warpdrives.team@gmail.com 
