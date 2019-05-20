@@ -7,7 +7,7 @@
 ![](https://img.shields.io/badge/License-Apache2.0-blue.svg)
 
 
-iOS Nesting viewController
+An excellent nested view controller for iOS
 
 
 ## Feedback
