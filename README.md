@@ -11,8 +11,8 @@ iOS Nesting viewController
 
 
 ## Author
-<img src="https://avatars1.githubusercontent.com/u/18067718?s=400&u=ea09deccd355b1c91ce3f4dce1a423b515e61962&v=4" width="25" height ="25"/>
-<img src="https://avatars1.githubusercontent.com/u/8384858?s=400&v=4" width="25" height ="25"/>
+<img src="https://avatars1.githubusercontent.com/u/18067718?s=400&u=ea09deccd355b1c91ce3f4dce1a423b515e61962&v=4" width="35" height ="35"/>
+<img src="https://avatars1.githubusercontent.com/u/8384858?s=400&v=4" width="35" height ="35"/>
 
 ## Feedback
 
