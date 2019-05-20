@@ -1,6 +1,4 @@
-# Nesting
-
-![](https://github.com/shevakuilin/MyGithubPicture/raw/master/Pictures/Nesting-banner.png)
+<img src="https://github.com/shevakuilin/MyGithubPicture/raw/master/Pictures/Nesting-banner.png" width="1776" height ="394" />
 
 ![](https://img.shields.io/badge/Platform-iOS-green.svg)
 ![](https://img.shields.io/badge/Language-Swift5.0-purple.svg)
@@ -11,9 +9,7 @@
 
 iOS Nesting viewController
 
-## Author
-
-Warpdrives, warpdrives.team@gmail.com
+## Feedback
 
 If you encounter problems during use, please contact: warpdrives.team@gmail.com 
 or submit [Issues](https://github.com/warpdrives/Nesting/issues/new) and we will respond as soon as possible.
