@@ -1,4 +1,3 @@
-#<img src="https://github.com/shevakuilin/MyGithubPicture/raw/master/Pictures/Nesting-banner.png" width="1776" height ="145" />
 ![](https://github.com/shevakuilin/MyGithubPicture/raw/master/Pictures/Nesting-banner.png)
 
 ![](https://img.shields.io/badge/Platform-iOS-green.svg)
