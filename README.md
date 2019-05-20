@@ -10,12 +10,12 @@
 An excellent nested view controller for iOS
 
 
-## Feedback
+### Feedback
 
 If you encounter problems during use, please contact: warpdrives.team@gmail.com 
 or submit [Issues](https://github.com/warpdrives/Nesting/issues/new) and we will respond as soon as possible.
 
-## License
+### License
 
 Nesting is available under the  `Apache 2.0` license. See the LICENSE file for more info.
 
