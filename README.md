@@ -1,4 +1,4 @@
-<img src="https://github.com/shevakuilin/MyGithubPicture/raw/master/Pictures/Nesting-banner.png" width="1776" height ="394" />
+<img src="https://github.com/shevakuilin/MyGithubPicture/raw/master/Pictures/Nesting-banner.png" width="1776" height ="145" />
 
 ![](https://img.shields.io/badge/Platform-iOS-green.svg)
 ![](https://img.shields.io/badge/Language-Swift5.0-purple.svg)
