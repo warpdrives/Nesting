@@ -25,7 +25,7 @@ or submit [Issues] and we will respond as soon as possible.
 
 ### License
 
-Nesting is available under the  `Apache 2.0` license. See the [LICENSE] file for more info.
+**Nesting** is available under the  `Apache 2.0` license. See the [LICENSE] file for more info.
 
 
 
