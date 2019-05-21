@@ -12,7 +12,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.ne_creatNestedViewController(5)
+        self.ne_creatContainerScrollView(5) // Test: Creat scrollView
     }
 }
-
