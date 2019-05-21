@@ -9,6 +9,8 @@
 
 An excellent nested view controller for iOS
 
+[中文说明]
+
 
 ### Compatibility
 
@@ -24,4 +26,8 @@ or submit [Issues](https://github.com/warpdrives/Nesting/issues/new) and we will
 ### License
 
 Nesting is available under the  `Apache 2.0` license. See the LICENSE file for more info.
+
+
+
+[中文说明]:     https://github.com/warpdrives/Nesting/wiki/%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E
 
