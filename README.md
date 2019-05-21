@@ -21,13 +21,14 @@ An excellent nested view controller for iOS
 ### Feedback
 
 If you encounter problems during use, please contact: warpdrives.team@gmail.com 
-or submit [Issues](https://github.com/warpdrives/Nesting/issues/new) and we will respond as soon as possible.
+or submit [Issues] and we will respond as soon as possible.
 
 ### License
 
-Nesting is available under the  `Apache 2.0` license. See the LICENSE file for more info.
+Nesting is available under the  `Apache 2.0` license. See the [LICENSE] file for more info.
 
 
 
-[中文说明]:     https://github.com/warpdrives/Nesting/wiki/%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E
-
+[中文说明]:    https://github.com/warpdrives/Nesting/wiki/%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E
+[Issues]:     https://github.com/warpdrives/Nesting/issues/new
+[LICENSE]:    https://github.com/warpdrives/Nesting/blob/master/LICENSE
