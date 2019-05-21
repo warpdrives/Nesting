@@ -10,6 +10,11 @@
 An excellent nested view controller for iOS
 
 
+### Compatibility
+
+- Xcode 10.2.x +
+- Swift 5.0
+
 ### Feedback
 
 If you encounter problems during use, please contact: warpdrives.team@gmail.com 
