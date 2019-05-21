@@ -13,7 +13,7 @@ An excellent nested view controller for iOS
 ### Compatibility
 
 - iOS 9.0 +
-- Xcode 10.2.x +
+- Xcode 10.2 +
 - Swift 5.0
 
 ### Feedback
