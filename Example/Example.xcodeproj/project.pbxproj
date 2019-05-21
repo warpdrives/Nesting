@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F2B2BD922943443004E9A00 /* NeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2B2BD822943443004E9A00 /* NeProtocol.swift */; };
+		9F2B2BDE22945053004E9A00 /* NeCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2B2BDD22945053004E9A00 /* NeCommon.swift */; };
 		9F9954192292F10600DE538F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9954182292F10600DE538F /* AppDelegate.swift */; };
 		9F99541B2292F10600DE538F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F99541A2292F10600DE538F /* ViewController.swift */; };
 		9F99541E2292F10600DE538F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F99541C2292F10600DE538F /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F2B2BD822943443004E9A00 /* NeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeProtocol.swift; sourceTree = "<group>"; };
+		9F2B2BDD22945053004E9A00 /* NeCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeCommon.swift; sourceTree = "<group>"; };
 		9F9954152292F10600DE538F /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9954182292F10600DE538F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F99541A2292F10600DE538F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F2B2BDC2294503F004E9A00 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				9F2B2BDD22945053004E9A00 /* NeCommon.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		9F99540C2292F10600DE538F = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +143,7 @@
 		9F9954462292F14B00DE538F /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				9F2B2BDC2294503F004E9A00 /* Common */,
 				9F99544A2292F45700DE538F /* Protocol */,
 				9F9954472292F22100DE538F /* Extension */,
 			);
@@ -149,6 +162,7 @@
 		9F99544A2292F45700DE538F /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				9F2B2BD822943443004E9A00 /* NeProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -284,7 +298,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F2B2BD922943443004E9A00 /* NeProtocol.swift in Sources */,
 				9F99541B2292F10600DE538F /* ViewController.swift in Sources */,
+				9F2B2BDE22945053004E9A00 /* NeCommon.swift in Sources */,
 				9F9954492292F3C600DE538F /* NeExtension.swift in Sources */,
 				9F9954192292F10600DE538F /* AppDelegate.swift in Sources */,
 			);
