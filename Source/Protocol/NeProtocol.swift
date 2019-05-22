@@ -18,9 +18,8 @@ protocol CreatNested: class {
     func ne_creatContainerScrollView(_ childControllerCount: Int)
 }
 
-extension CreatNested where Self : UIViewController {
+extension CreatNested where Self: UIViewController {
     func ne_creatContainerScrollView(_ childControllerCount: Int) {
-        ne_assert(type: .childControllerCount, value: childControllerCount)
         ne_creatNestedViewController(childControllerCount)
     }
 }

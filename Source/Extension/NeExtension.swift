@@ -10,15 +10,15 @@ import UIKit
 
 extension UIViewController: CreatNested {
     /**
-     *  Creat a nested viewController
+     *  Creat a nested viewController.
      *
-     *  @param childControllerCount The Count of childControllers in the nestedViewController
+     *  @param childControllerCount The Count of childControllers in the nestedViewController.
      *
      */
     func ne_creatNestedViewController(_ childControllerCount: Int) {
-        guard childControllerCount > 1 else { return }
+        ne_assert(type: .childControllerCount, value: childControllerCount)
         
-        let scrollSize = CGSize(width: UIScreen.main.bounds.size.width, height:UIScreen.main.bounds.size.height)
+        let scrollSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
         let scrollView = self.ne_scrollView
         scrollView.contentSize = CGSize(width: scrollSize.width * CGFloat(childControllerCount), height: scrollSize.height)
         scrollView.frame = self.view.frame
