@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66BB2EBE229A44D800ACD9BB /* NeConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BB2EBD229A44D800ACD9BB /* NeConfig.swift */; };
+		66BB2EC0229A4B2800ACD9BB /* NextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BB2EBF229A4B2800ACD9BB /* NextViewController.swift */; };
 		9F2B2BD922943443004E9A00 /* NeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2B2BD822943443004E9A00 /* NeProtocol.swift */; };
 		9F2B2BDE22945053004E9A00 /* NeCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2B2BDD22945053004E9A00 /* NeCommon.swift */; };
 		9F9954192292F10600DE538F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9954182292F10600DE538F /* AppDelegate.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		66BB2EBD229A44D800ACD9BB /* NeConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeConfig.swift; sourceTree = "<group>"; };
+		66BB2EBF229A4B2800ACD9BB /* NextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
 		9F2B2BD822943443004E9A00 /* NeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeProtocol.swift; sourceTree = "<group>"; };
 		9F2B2BDD22945053004E9A00 /* NeCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeCommon.swift; sourceTree = "<group>"; };
 		9F9954152292F10600DE538F /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				9F2B2BDD22945053004E9A00 /* NeCommon.swift */,
+				66BB2EBD229A44D800ACD9BB /* NeConfig.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -114,6 +119,7 @@
 			children = (
 				9F9954182292F10600DE538F /* AppDelegate.swift */,
 				9F99541A2292F10600DE538F /* ViewController.swift */,
+				66BB2EBF229A4B2800ACD9BB /* NextViewController.swift */,
 				9F99541C2292F10600DE538F /* Main.storyboard */,
 				9F99541F2292F10900DE538F /* Assets.xcassets */,
 				9F9954212292F10900DE538F /* LaunchScreen.storyboard */,
@@ -299,9 +305,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F2B2BD922943443004E9A00 /* NeProtocol.swift in Sources */,
+				66BB2EC0229A4B2800ACD9BB /* NextViewController.swift in Sources */,
 				9F99541B2292F10600DE538F /* ViewController.swift in Sources */,
 				9F2B2BDE22945053004E9A00 /* NeCommon.swift in Sources */,
 				9F9954492292F3C600DE538F /* NeExtension.swift in Sources */,
+				66BB2EBE229A44D800ACD9BB /* NeConfig.swift in Sources */,
 				9F9954192292F10600DE538F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,7 +494,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Team.Warpdrives.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -504,7 +512,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Team.Warpdrives.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -523,7 +531,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Team.Warpdrives.ExampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 			};
@@ -543,7 +551,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Team.Warpdrives.ExampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 			};
@@ -562,7 +570,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Team.Warpdrives.ExampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Example;
 			};
@@ -581,7 +589,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Team.Warpdrives.ExampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Example;
 			};
