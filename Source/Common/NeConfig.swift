@@ -22,5 +22,5 @@ class NeConfig {
     static let `default` = NeConfig()
     
     /// key is vc address pointer
-    var ne_nestedDict = [String:CreatNestedProtocolModel]()
+    var ne_nestedDict = [String: CreatNestedProtocolModel]()
 }

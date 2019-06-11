@@ -20,20 +20,16 @@ import Foundation
 private let NE_FROM_MESSAGE = "[**From Nesting**]"
 private let NE_ASSERT_CHILDCONTROLLERCOUNT_ERROR = "\(NE_FROM_MESSAGE) The nested viewController needs to contain at least two childControllers, you must have the value of childControllerCount at least greater than 1"
 
+/// Type of Assert
 public enum NEAssertType: Int {
-    /**
-     * @abstract The count of childController is less than 2.
-     */
+    /// The count of childController is less than 2.
     case childControllerCount
 }
 
-/**
- *  Assert
- *
- *  @param type     Type of assert.
- *  @param value    Generics that follow the <Comparable> protocol.
- *
- */
+/// Assert of Nesting
+///
+/// - Parameter type:       Type of assert.
+/// - Parameter value:      Generics that follow the <Comparable> protocol.
 public func ne_assert<T: Comparable>(type: NEAssertType, value: T) {
     switch type {
     case .childControllerCount:
@@ -42,14 +38,12 @@ public func ne_assert<T: Comparable>(type: NEAssertType, value: T) {
     }
 }
 
-/** Format print output
- *
- *  @param message  Output text message. [e.g., "array.first"]
- *  @param file     The path to the file containing this symbol.
- *  @param method   Method name containing this symbol.
- *  @param line     The line number where the symbol appears.
- *
- */
+/// Format print output
+///
+/// - Parameter message:    Output text message. [e.g., "array.first"]
+/// - Parameter file:       The path to the file containing this symbol.
+/// - Parameter method:     Method name containing this symbol.
+/// - Parameter line:       The line number where the symbol appears.
 public func ne_print<T>(_ message: T,
                         file: String = #file,
                         method: String = #function,

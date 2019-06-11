@@ -17,21 +17,18 @@
 
 import UIKit
 
-protocol CreatNested:class{
-    /**
-     *  Create a low-level container based on UIScrollView.
-     *
-     *  @param childControllerCount The Count of childControllers in the container.
-     *
-     */
+protocol CreatNested: class {
+    /// Create a low-level container based on UIScrollView.
+    ///
+    /// - Parameter childControllerCount:   The Count of childControllers in the container.
     func ne_creatContainerScrollView(_ childControllerCount: Int)
     
-    var ne_backgroundColor:UIColor {set get}
+    var ne_backgroundColor: UIColor { set get }
 }
 
 public class CreatNestedProtocolModel {
     
-    var ne_backgroundColor:UIColor = UIColor.red
+    var ne_backgroundColor: UIColor = .red
 }
 
 extension CreatNested where Self: UIViewController {
@@ -54,6 +51,4 @@ extension CreatNested where Self: UIViewController {
 //            self.ne_getCurrentConfig().ne_backgroundColor = newValue
         }
     }
-
-   
 }
