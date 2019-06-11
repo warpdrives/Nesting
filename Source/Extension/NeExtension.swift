@@ -21,7 +21,7 @@ extension UIViewController: CreatNested {
     /// Creat a nested viewController.
     ///
     /// - Parameter childControllerCount:    The Count of childControllers in the nestedViewController.
-    func ne_creatNestedViewController(_ childControllerCount: Int){
+    func ne_creatNestedViewController(_ childControllerCount: Int) {
         ne_assert(type: .childControllerCount, value: childControllerCount)
     
         let scrollSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
