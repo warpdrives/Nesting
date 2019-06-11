@@ -52,13 +52,13 @@ public extension UIViewController{
     /// Get neConfig
     func ne_getCurrentConfig() -> CreatNestedProtocolModel {
         let address_pointer = self.ne_getCurrentVCAddressPointer()
-        print(address_pointer)
-        var ne_comment = NeConfig.default.ne_nestedDict[address_pointer]
-        if ne_comment == nil {
-            ne_comment = CreatNestedProtocolModel()
-            NeConfig.default.ne_nestedDict[address_pointer] = ne_comment
+        ne_print(address_pointer)
+        let ne_value = NeConfig.default.ne_nestedDict[address_pointer]
+        guard let theValue = ne_value else {
+            NeConfig.default.ne_nestedDict[address_pointer] = ne_value
+            return CreatNestedProtocolModel()
         }
-        return ne_comment!
+        return theValue
     }
     
     /// remove neConfig
