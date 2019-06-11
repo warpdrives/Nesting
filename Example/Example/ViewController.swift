@@ -9,25 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-    private var childControllers = [UIViewController]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        initChildControllers()
         initNestedViewController()
     }
 }
 
 private extension ViewController {
-    private func initChildControllers() {
-        childControllers = [PremierLeagueViewController(),
-                            LaLigaViewController(),
-                            LegaSerieAViewController(),
-                            BundesLigaViewController(),
-                            Ligue1ViewController()]
-    }
-    
     private func initNestedViewController() {
+        let childControllers = [PremierLeagueViewController(),
+                                LaLigaViewController(),
+                                LegaSerieAViewController(),
+                                BundesLigaViewController(),
+                                Ligue1ViewController()]
         self.ne_creatNestedContainer(childControllers, nil)
     }
 }
