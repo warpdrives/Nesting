@@ -14,7 +14,7 @@ class NextViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white;
         self.ne_backgroundColor = .orange;
-        self.ne_creatContainerScrollView(5) // Test: Creat scrollView
+//        self.ne_creatContainerScrollView(5) // Test: Creat scrollView
         // Do any additional setup after loading the view.
     }
     

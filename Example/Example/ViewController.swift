@@ -9,17 +9,25 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    private var childControllers = [UIViewController]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.ne_creatContainerScrollView(5) // Test: Creat scrollView
-        //self.ne_backgroundColor = UIColor.red;
-        
+        initChildControllers()
+        initNestedViewController()
     }
 }
 
-class NEContainerScrollView: UIScrollView {
-    func ne_creatNestedViewController(_ childControllerCount: Int){
-
+private extension ViewController {
+    private func initChildControllers() {
+        childControllers = [PremierLeagueViewController(),
+                            LaLigaViewController(),
+                            LegaSerieAViewController(),
+                            BundesLigaViewController(),
+                            Ligue1ViewController()]
+    }
+    
+    private func initNestedViewController() {
+        self.ne_creatNestedContainer(childControllers, nil)
     }
 }
