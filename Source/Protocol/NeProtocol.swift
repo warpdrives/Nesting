@@ -18,23 +18,19 @@
 import UIKit
 
 protocol CreatNested: class {
-    /// Create a low-level container based on UIScrollView.
+    /// Creat a nested viewController
     ///
-    /// - Parameter childControllerCount:   The Count of childControllers in the container.
-    func ne_creatContainerScrollView(_ childControllerCount: Int)
+    /// - Parameter childConrtoller:    The childControllers in the nested viewController.
+    /// - Parameter headerView:         Head view that does not participate in the linkage between the bottom lists.
+    func ne_creatNestedViewController(_ childConrtoller: [UIViewController], _ headerView: UIView?)
     
-    var ne_backgroundColor: UIColor { set get }
-}
-
-public class CreatNestedProtocolModel {
-    
-    var ne_backgroundColor: UIColor = .red
+    var ne_backgroundColor: UIColor { get set }
+    var ne_currentViewController: UIViewController { get set }
 }
 
 extension CreatNested where Self: UIViewController {
-    
-    func ne_creatContainerScrollView(_ childControllerCount: Int) {
-        ne_creatNestedViewController(childControllerCount)
+    func ne_creatNestedViewController(_ childConrtoller: [UIViewController], _ headerView: UIView?) {
+        ne_creatNestedContainer(childConrtoller, headerView)
     }
 
     var ne_backgroundColor: UIColor {
@@ -42,13 +38,22 @@ extension CreatNested where Self: UIViewController {
             return self.ne_getCurrentConfig().ne_backgroundColor
         }
         set {
-//class
+/// class
             self.ne_getCurrentConfig().ne_backgroundColor = newValue
-// struct
-//            var config = self.ne_getCurrentConfig()
-//            config.ne_backgroundColor = newValue
-//            NeConfig.default.ne_nestedDict[self.ne_getCurrentVCAddressPointer()] = config
-//            self.ne_getCurrentConfig().ne_backgroundColor = newValue
+///  struct
+///            var config = self.ne_getCurrentConfig()
+///            config.ne_backgroundColor = newValue
+///            NeConfig.default.ne_nestedDict[self.ne_getCurrentVCAddressPointer()] = config
+///            self.ne_getCurrentConfig().ne_backgroundColor = newValue
+        }
+    }
+    
+    var ne_currentViewController: UIViewController {
+        get {
+            return self.ne_getCurrentConfig().ne_currentViewController
+        }
+        set {
+            self.ne_getCurrentConfig().ne_currentViewController = newValue
         }
     }
 }
