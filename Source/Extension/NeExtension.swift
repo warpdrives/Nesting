@@ -85,6 +85,20 @@ public extension UIViewController {
     }
 }
 
+public extension UIViewController {
+    /// Get UINavigationBar's height
+    var ne_navigationBarHeight: CGFloat {
+        get {
+            guard let frame: CGRect = self.navigationController?.navigationBar.value(forKey: "frame") as? CGRect else {
+                return 0.0
+            }
+            let y = frame.origin.y
+            let height = frame.size.height
+            return y + height
+        }
+    }
+}
+
 private extension UIViewController {
     /// Get scrollView
     private var ne_scrollView: UIScrollView {
@@ -97,18 +111,6 @@ private extension UIViewController {
             scrollView.showsVerticalScrollIndicator = false
             scrollView.scrollsToTop = false
             return scrollView
-        }
-    }
-    
-    /// Get UINavigationBar's height
-    private var ne_navigationBarHeight: CGFloat {
-        get {
-            guard let frame: CGRect = self.navigationController?.navigationBar.value(forKey: "frame") as? CGRect else {
-                return 0.0
-            }
-            let y = frame.origin.y
-            let height = frame.size.height
-            return y + height
         }
     }
 }
