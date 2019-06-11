@@ -25,7 +25,9 @@
 		9F9954232292F10900DE538F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F9954212292F10900DE538F /* LaunchScreen.storyboard */; };
 		9F99542E2292F10900DE538F /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F99542D2292F10900DE538F /* ExampleTests.swift */; };
 		9F9954392292F10900DE538F /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9954382292F10900DE538F /* ExampleUITests.swift */; };
-		9F9954492292F3C600DE538F /* NeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9954482292F3C600DE538F /* NeExtension.swift */; };
+		9FF4724322AFC0E9005B171E /* UIViewController+NeConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4724222AFC0E9005B171E /* UIViewController+NeConfig.swift */; };
+		9FF4724722AFC151005B171E /* UIViewController+NeCreat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4724622AFC151005B171E /* UIViewController+NeCreat.swift */; };
+		9FF4724922AFC1B7005B171E /* UIViewController+NeProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4724822AFC1B7005B171E /* UIViewController+NeProperty.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +72,9 @@
 		9F9954342292F10900DE538F /* ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9954382292F10900DE538F /* ExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleUITests.swift; sourceTree = "<group>"; };
 		9F99543A2292F10900DE538F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9F9954482292F3C600DE538F /* NeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeExtension.swift; sourceTree = "<group>"; };
+		9FF4724222AFC0E9005B171E /* UIViewController+NeConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NeConfig.swift"; sourceTree = "<group>"; };
+		9FF4724622AFC151005B171E /* UIViewController+NeCreat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NeCreat.swift"; sourceTree = "<group>"; };
+		9FF4724822AFC1B7005B171E /* UIViewController+NeProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NeProperty.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,7 +224,9 @@
 		9F9954472292F22100DE538F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				9F9954482292F3C600DE538F /* NeExtension.swift */,
+				9FF4724222AFC0E9005B171E /* UIViewController+NeConfig.swift */,
+				9FF4724622AFC151005B171E /* UIViewController+NeCreat.swift */,
+				9FF4724822AFC1B7005B171E /* UIViewController+NeProperty.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -370,13 +376,15 @@
 				9F930B8E22AF9FCC00B9A42C /* CreatNestedProtocolModel.swift in Sources */,
 				9F2B2BD922943443004E9A00 /* NeProtocol.swift in Sources */,
 				9F63C87022AF89EA003C37EE /* LaLigaViewController.swift in Sources */,
+				9FF4724722AFC151005B171E /* UIViewController+NeCreat.swift in Sources */,
 				9F63C87222AF8A10003C37EE /* LegaSerieAViewController.swift in Sources */,
 				9F63C87622AF8A86003C37EE /* Ligue1ViewController.swift in Sources */,
 				9F63C87922AF8AFD003C37EE /* LeagueViewController.swift in Sources */,
+				9FF4724922AFC1B7005B171E /* UIViewController+NeProperty.swift in Sources */,
 				66BB2EC0229A4B2800ACD9BB /* NextViewController.swift in Sources */,
+				9FF4724322AFC0E9005B171E /* UIViewController+NeConfig.swift in Sources */,
 				9F99541B2292F10600DE538F /* ViewController.swift in Sources */,
 				9F2B2BDE22945053004E9A00 /* NeCommon.swift in Sources */,
-				9F9954492292F3C600DE538F /* NeExtension.swift in Sources */,
 				66BB2EBE229A44D800ACD9BB /* NeConfig.swift in Sources */,
 				9F63C86E22AF89A3003C37EE /* PremierLeagueViewController.swift in Sources */,
 				9F9954192292F10600DE538F /* AppDelegate.swift in Sources */,

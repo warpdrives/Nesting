@@ -13,7 +13,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-
+    
 
 import UIKit
 
@@ -39,6 +39,7 @@ extension UIViewController: CreatNested {
         self.view.addSubview(scrollView)
         
         var currentViewController = ne_getCurrentConfig().ne_currentViewController
+        /// Add childController
         for i in 0..<childConrtoller.count {
             let viewController = childConrtoller[i]
             self.addChild(viewController)
@@ -53,48 +54,6 @@ extension UIViewController: CreatNested {
             } else {
                 scrollView.addSubview(viewController.view)
             }
-        }
-    }
-}
-
-public extension UIViewController {
-    /// Get neConfig
-    func ne_getCurrentConfig() -> CreatNestedProtocolModel {
-        let address_pointer = ne_getCurrentVCAddressPointer()
-        ne_print(address_pointer)
-        let ne_value = NeConfig.default.ne_nestedDict[address_pointer]
-        guard let theValue = ne_value else {
-            NeConfig.default.ne_nestedDict[address_pointer] = ne_value
-            return CreatNestedProtocolModel()
-        }
-        return theValue
-    }
-    
-    /// Remove neConfig
-    func ne_removeConfig() {
-        let address_pointer = ne_getCurrentVCAddressPointer()
-        NeConfig.default.ne_nestedDict.removeValue(forKey: address_pointer)
-    }
-    
-    /// Get currentVC address pointer
-    ///
-    /// - Returns: address pointer String
-    func ne_getCurrentVCAddressPointer () -> String {
-        let address_pointer = "\(Unmanaged.passUnretained(self).toOpaque())"
-        return address_pointer
-    }
-}
-
-public extension UIViewController {
-    /// Get UINavigationBar's height
-    var ne_navigationBarHeight: CGFloat {
-        get {
-            guard let frame: CGRect = self.navigationController?.navigationBar.value(forKey: "frame") as? CGRect else {
-                return 0.0
-            }
-            let y = frame.origin.y
-            let height = frame.size.height
-            return y + height
         }
     }
 }
