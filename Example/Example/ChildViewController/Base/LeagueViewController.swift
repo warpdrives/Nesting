@@ -31,7 +31,7 @@ class LeagueViewController: UIViewController {
 private extension LeagueViewController {
     private func initElement() {
         tableView = UITableView()
-        tableView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
+        tableView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height - ne_navigationBarHeight)
         tableView.dataSource = self
         tableView.delegate = self
         self.view.addSubview(tableView)
