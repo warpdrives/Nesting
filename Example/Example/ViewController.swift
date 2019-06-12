@@ -22,6 +22,10 @@ private extension ViewController {
                                 LegaSerieAViewController(),
                                 BundesLigaViewController(),
                                 Ligue1ViewController()]
-        self.ne_creatNestedContainer(childControllers, nil)
+        let headerView = UEFAChampionsLeagueView(frame: CGRect(x: 0,
+                                                               y: ne_navigationBarHeight,
+                                                               width: UIScreen.main.bounds.size.width,
+                                                               height: 150))
+        self.ne_creatNestedContainer(childControllers, headerView)
     }
 }
