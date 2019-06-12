@@ -17,7 +17,7 @@
 
 import UIKit
 
-protocol CreatNested: class {
+protocol NECreatNested: class {
     /// Creat a nested viewController
     ///
     /// - Parameter childConrtoller:    The childControllers in the nested viewController.
@@ -27,7 +27,7 @@ protocol CreatNested: class {
     var ne_backgroundColor: UIColor { get set }
 }
 
-extension CreatNested where Self: UIViewController {
+extension NECreatNested where Self: UIViewController {
     func ne_creatNestedViewController(_ childConrtoller: [UIViewController], _ headerView: UIView?) {
         ne_creatNestedContainer(childConrtoller, headerView)
     }
@@ -37,13 +37,18 @@ extension CreatNested where Self: UIViewController {
             return self.ne_getCurrentConfig().ne_backgroundColor
         }
         set {
-/// class
             self.ne_getCurrentConfig().ne_backgroundColor = newValue
-///  struct
-///            var config = self.ne_getCurrentConfig()
-///            config.ne_backgroundColor = newValue
-///            NeConfig.default.ne_nestedDict[self.ne_getCurrentVCAddressPointer()] = config
-///            self.ne_getCurrentConfig().ne_backgroundColor = newValue
         }
+    }
+}
+
+protocol NEDestroy: class {
+    /// Destroys the monitor for the UITableView scroll event for childViewControllers.
+    func scrollMonitorDestroy()
+}
+
+extension NEDestroy where Self: UIViewController {
+    func scrollMonitorDestroy() {
+        NEMonitor.destroy()
     }
 }
