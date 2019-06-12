@@ -55,6 +55,10 @@ extension UIViewController: CreatNested {
                 scrollView.addSubview(viewController.view)
             }
         }
+        /// Add headerView
+        if let header = headerView {
+            self.view.addSubview(header)
+        }
     }
 }
 
