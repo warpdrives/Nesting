@@ -52,3 +52,37 @@ public func ne_print<T>(_ message: T,
     print("\n[\((file as NSString).lastPathComponent) \(method)] - [Line \(line)] - \(message)\n")
     #endif
 }
+
+/// Refresh style template for nested view controllers.
+public enum NERefreshTemplate: Int {
+    /// The default refresh style, when the pull-down refresh, the refresh control will appear between the headerView and the tableView of the childViewController.
+    ///
+    /// - Note: The view layout from top to bottom is: headerView -> refreshControl -> tableView
+    ///                                       headerView
+    ///                                           ↓
+    ///                                     refreshControl
+    ///                                           ↓
+    ///                                       tableView
+    case normal
+    /// The overall refresh style, the refresh control will appear at the top of the view.
+    ///
+    /// - Note: The view layout from top to bottom is: refreshControl -> headerView -> tableView
+    ///                                     refreshControl
+    ///                                           ↓
+    ///                                       headerView
+    ///                                           ↓
+    ///                                       tableView
+    case overall
+    /// Refresh style without header view, refresh control appears on top of tableView of childViewController when pull-down refresh.
+    ///
+    /// - Note: This style does not include a HEADER VIEW
+    /// - Note: The view layout from top to bottom is: refreshControl -> tableView
+    ///                                     refreshControl
+    ///                                           ↓
+    ///                                       tableView
+    case nonHeader
+    /// Completely customize without using any kind of refresh template
+    ///
+    /// - Note: All layout effects based on refresh templates will be invalid. You need to handle the layout relationship between them yourself.
+    case custom
+}
