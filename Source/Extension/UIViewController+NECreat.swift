@@ -29,7 +29,7 @@ extension UIViewController: CreatNested {
                                 height: UIScreen.main.bounds.size.height)
         let navigationBarHeight = ne_navigationBarHeight
         
-        let scrollView = self.ne_scrollView
+        let scrollView = ne_scrollView
         scrollView.frame = CGRect(x: 0,
                                   y: navigationBarHeight,
                                   width: screenSize.width,
@@ -38,7 +38,6 @@ extension UIViewController: CreatNested {
                                         height: screenSize.height - navigationBarHeight)
         self.view.addSubview(scrollView)
         
-        var currentViewController = ne_getCurrentConfig().ne_currentViewController
         /// Add childController
         for i in 0..<childConrtoller.count {
             let viewController = childConrtoller[i]
@@ -47,18 +46,16 @@ extension UIViewController: CreatNested {
                                                y: 0,
                                                width: screenSize.width,
                                                height: screenSize.height)
-            if i == 0 {
-                currentViewController = viewController
-                currentViewController.view.frame = viewController.view.frame
-                scrollView.addSubview(currentViewController.view)
-            } else {
-                scrollView.addSubview(viewController.view)
-            }
+            scrollView.addSubview(viewController.view)
         }
         /// Add headerView
         if let header = headerView {
             self.view.addSubview(header)
         }
+    }
+    
+    func ne_linkageControl() {
+        
     }
 }
 

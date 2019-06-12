@@ -25,7 +25,6 @@ protocol CreatNested: class {
     func ne_creatNestedViewController(_ childConrtoller: [UIViewController], _ headerView: UIView?)
     
     var ne_backgroundColor: UIColor { get set }
-    var ne_currentViewController: UIViewController { get set }
 }
 
 extension CreatNested where Self: UIViewController {
@@ -45,15 +44,6 @@ extension CreatNested where Self: UIViewController {
 ///            config.ne_backgroundColor = newValue
 ///            NeConfig.default.ne_nestedDict[self.ne_getCurrentVCAddressPointer()] = config
 ///            self.ne_getCurrentConfig().ne_backgroundColor = newValue
-        }
-    }
-    
-    var ne_currentViewController: UIViewController {
-        get {
-            return self.ne_getCurrentConfig().ne_currentViewController
-        }
-        set {
-            self.ne_getCurrentConfig().ne_currentViewController = newValue
         }
     }
 }
