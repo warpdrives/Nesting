@@ -20,7 +20,7 @@ import UIKit
 public extension UIViewController {
     /// Get neConfig
     func ne_getCurrentConfig() -> CreatNestedProtocolModel {
-        let address_pointer = ne_getCurrentVCAddressPointer()
+        let address_pointer = ne_getCurrentViewControllerAddressPointer()
         ne_print(address_pointer)
         let ne_value = NEConfig.default.ne_nestedDict[address_pointer]
         guard let theValue = ne_value else {
@@ -32,14 +32,14 @@ public extension UIViewController {
     
     /// Remove neConfig
     func ne_removeConfig() {
-        let address_pointer = ne_getCurrentVCAddressPointer()
+        let address_pointer = ne_getCurrentViewControllerAddressPointer()
         NEConfig.default.ne_nestedDict.removeValue(forKey: address_pointer)
     }
     
-    /// Get currentVC address pointer
+    /// Get current viewController address pointer
     ///
     /// - Returns: address pointer String
-    func ne_getCurrentVCAddressPointer () -> String {
+    func ne_getCurrentViewControllerAddressPointer () -> String {
         let address_pointer = "\(Unmanaged.passUnretained(self).toOpaque())"
         return address_pointer
     }
