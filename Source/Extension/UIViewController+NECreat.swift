@@ -17,13 +17,16 @@
 
 import UIKit
 
-extension UIViewController: CreatNested {
+extension UIViewController: NECreatNested {
     /// Creat a nested container.
     ///
     /// - Parameter childConrtoller:    The childControllers in the container.
     /// - Parameter headerView:         Head view that does not participate in the linkage between the bottom lists.
     func ne_creatNestedContainer(_ childConrtoller: [UIViewController], _ headerView: UIView?) {
         ne_assert(type: .childControllerCount, value: childConrtoller.count)
+        
+        /// Register scroll event monitor
+        NEMonitor.shared().registerScrollMonitor()
         
         let screenSize = CGSize(width: UIScreen.main.bounds.size.width,
                                 height: UIScreen.main.bounds.size.height)
@@ -47,15 +50,19 @@ extension UIViewController: CreatNested {
                                                width: screenSize.width,
                                                height: screenSize.height)
             scrollView.addSubview(viewController.view)
+            
+            let subviews = viewController.view.subviews
+            for view in subviews {
+                /// - Note: Temporarily does not support the existence of multiple tableviews in childViewController.
+                if view.isKind(of: UITableView.classForCoder()) {
+                    NEMonitor.shared().scrollMonitor.monitor(tableView: view as! UITableView)
+                }
+            }
         }
         /// Add headerView
         if let header = headerView {
             self.view.addSubview(header)
         }
-    }
-    
-    func ne_linkageControl() {
-        
     }
 }
 
@@ -65,7 +72,7 @@ private extension UIViewController {
         get {
             let scrollView = UIScrollView()
             scrollView.delegate = self as? UIScrollViewDelegate
-            scrollView.backgroundColor = self.ne_backgroundColor
+            scrollView.backgroundColor = ne_backgroundColor
             scrollView.isPagingEnabled = true
             scrollView.showsHorizontalScrollIndicator = false
             scrollView.showsVerticalScrollIndicator = false
