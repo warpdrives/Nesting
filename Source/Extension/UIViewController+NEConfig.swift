@@ -22,9 +22,9 @@ public extension UIViewController {
     func ne_getCurrentConfig() -> CreatNestedProtocolModel {
         let address_pointer = ne_getCurrentVCAddressPointer()
         ne_print(address_pointer)
-        let ne_value = NeConfig.default.ne_nestedDict[address_pointer]
+        let ne_value = NEConfig.default.ne_nestedDict[address_pointer]
         guard let theValue = ne_value else {
-            NeConfig.default.ne_nestedDict[address_pointer] = ne_value
+            NEConfig.default.ne_nestedDict[address_pointer] = ne_value
             return CreatNestedProtocolModel()
         }
         return theValue
@@ -33,7 +33,7 @@ public extension UIViewController {
     /// Remove neConfig
     func ne_removeConfig() {
         let address_pointer = ne_getCurrentVCAddressPointer()
-        NeConfig.default.ne_nestedDict.removeValue(forKey: address_pointer)
+        NEConfig.default.ne_nestedDict.removeValue(forKey: address_pointer)
     }
     
     /// Get currentVC address pointer

@@ -17,9 +17,9 @@
 
 import Foundation
 
-class NeConfig {
+class NEConfig {
     private init() {}
-    static let `default` = NeConfig()
+    static let `default` = NEConfig()
     
     /// key is vc address pointer
     var ne_nestedDict = [String: CreatNestedProtocolModel]()
