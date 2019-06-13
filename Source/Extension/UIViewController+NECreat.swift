@@ -28,6 +28,8 @@ extension UIViewController: NECreatNested {
         
         /// Register scroll event monitor
         NEMonitor.shared().registerScrollMonitor()
+        /// Set NELinkage protocol
+        NEMonitor.shared().setDelegate(targrt: self)
         
         let screenSize = CGSize(width: UIScreen.main.bounds.size.width,
                                 height: UIScreen.main.bounds.size.height)
@@ -44,7 +46,8 @@ extension UIViewController: NECreatNested {
         
         /// Add headerView
         if let header = headerView {
-            self.view.addSubview(header)
+            ne_header = header
+            self.view.addSubview(ne_header)
         }
         /// Add childController
         for i in 0..<childConrtoller.count {
@@ -75,6 +78,26 @@ extension UIViewController: NECreatNested {
                 NEMonitor.shared().scrollMonitor.monitor(tableView: tableView)
             }
         }
+    }
+}
+
+extension UIViewController: NELinkage {
+    func ne_changeHeaderView(originY: CGFloat) {
+        let headerInitialY: CGFloat = ne_navigationBarHeight    /// The headerView initial offset on the y-axis.
+        let scrollViewInitialY: CGFloat = ne_header.frame.size.height   /// The initial offset of the nested view controller's scrollView on the y-axis.
+        var headerOffsetY: CGFloat = headerInitialY - CGFloat(fabsf(Float(scrollViewInitialY + originY)))
+        /// The boundary value of the offset of the headerView on the y-axis.
+        if headerOffsetY <= -(scrollViewInitialY - headerInitialY) {
+            headerOffsetY = -(scrollViewInitialY - headerInitialY)
+        } else if headerOffsetY >= headerInitialY || originY <= -scrollViewInitialY {
+            headerOffsetY = headerInitialY
+        }
+        ne_print("current headerOffsetY: \(headerOffsetY), originY: \(originY)")
+        /// Update ne_header's frame.
+        ne_header.frame = CGRect(x: ne_header.frame.origin.x,
+                                 y: headerOffsetY,
+                                 width: ne_header.frame.size.width,
+                                 height: ne_header.frame.size.height)
     }
 }
 
