@@ -22,7 +22,7 @@ public extension UITableView {
     ///
     /// - Parameter headerView:         Header view of nested view controller.
     /// - Parameter refreshTemplate:    Refresh style template for nested view controllers.
-    func ne_setContent(_ headerView: UIView?,  _ refreshTemplate: NERefreshTemplate) {
+    func ne_setContent(_ headerView: UIView?, _ refreshTemplate: NERefreshTemplate) {
         guard let header = headerView else { return }
         if refreshTemplate == .normal || refreshTemplate == .overall {
             self.contentInset = UIEdgeInsets(top: header.frame.size.height,
