@@ -10,7 +10,6 @@
 		66BB2EBE229A44D800ACD9BB /* NEConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BB2EBD229A44D800ACD9BB /* NEConfig.swift */; };
 		66BB2EC0229A4B2800ACD9BB /* NextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BB2EBF229A4B2800ACD9BB /* NextViewController.swift */; };
 		9F1B384822B0AFE40085E735 /* UEFAChampionsLeagueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1B384722B0AFE40085E735 /* UEFAChampionsLeagueView.swift */; };
-		9F243C6622B1359100CEC172 /* UITableView+NEContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F243C6522B1359100CEC172 /* UITableView+NEContent.swift */; };
 		9F2B2BD922943443004E9A00 /* NEProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2B2BD822943443004E9A00 /* NEProtocol.swift */; };
 		9F2B2BDE22945053004E9A00 /* NECommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2B2BDD22945053004E9A00 /* NECommon.swift */; };
 		9F63C86E22AF89A3003C37EE /* PremierLeagueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63C86D22AF89A3003C37EE /* PremierLeagueViewController.swift */; };
@@ -28,6 +27,7 @@
 		9F99542E2292F10900DE538F /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F99542D2292F10900DE538F /* ExampleTests.swift */; };
 		9F9954392292F10900DE538F /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9954382292F10900DE538F /* ExampleUITests.swift */; };
 		9FAD444422B0FE71001F1CEB /* NEMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAD444322B0FE71001F1CEB /* NEMonitor.swift */; };
+		9FCB3A4B22B21DCF003439ED /* UITableView+NEContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCB3A4A22B21DCF003439ED /* UITableView+NEContent.swift */; };
 		9FF4724322AFC0E9005B171E /* UIViewController+NEConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4724222AFC0E9005B171E /* UIViewController+NEConfig.swift */; };
 		9FF4724722AFC151005B171E /* UIViewController+NECreat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4724622AFC151005B171E /* UIViewController+NECreat.swift */; };
 		9FF4724922AFC1B7005B171E /* UIViewController+NEProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4724822AFC1B7005B171E /* UIViewController+NEProperty.swift */; };
@@ -54,7 +54,6 @@
 		66BB2EBD229A44D800ACD9BB /* NEConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEConfig.swift; sourceTree = "<group>"; };
 		66BB2EBF229A4B2800ACD9BB /* NextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
 		9F1B384722B0AFE40085E735 /* UEFAChampionsLeagueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UEFAChampionsLeagueView.swift; sourceTree = "<group>"; };
-		9F243C6522B1359100CEC172 /* UITableView+NEContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITableView+NEContent.swift"; path = "../Common/UITableView+NEContent.swift"; sourceTree = "<group>"; };
 		9F2B2BD822943443004E9A00 /* NEProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEProtocol.swift; sourceTree = "<group>"; };
 		9F2B2BDD22945053004E9A00 /* NECommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NECommon.swift; sourceTree = "<group>"; };
 		9F63C86D22AF89A3003C37EE /* PremierLeagueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremierLeagueViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +77,7 @@
 		9F9954382292F10900DE538F /* ExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleUITests.swift; sourceTree = "<group>"; };
 		9F99543A2292F10900DE538F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FAD444322B0FE71001F1CEB /* NEMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEMonitor.swift; sourceTree = "<group>"; };
+		9FCB3A4A22B21DCF003439ED /* UITableView+NEContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+NEContent.swift"; sourceTree = "<group>"; };
 		9FF4724222AFC0E9005B171E /* UIViewController+NEConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NEConfig.swift"; sourceTree = "<group>"; };
 		9FF4724622AFC151005B171E /* UIViewController+NECreat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NECreat.swift"; sourceTree = "<group>"; };
 		9FF4724822AFC1B7005B171E /* UIViewController+NEProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NEProperty.swift"; sourceTree = "<group>"; };
@@ -232,10 +232,10 @@
 		9F9954472292F22100DE538F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				9FCB3A4A22B21DCF003439ED /* UITableView+NEContent.swift */,
 				9FF4724222AFC0E9005B171E /* UIViewController+NEConfig.swift */,
 				9FF4724622AFC151005B171E /* UIViewController+NECreat.swift */,
 				9FF4724822AFC1B7005B171E /* UIViewController+NEProperty.swift */,
-				9F243C6522B1359100CEC172 /* UITableView+NEContent.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -399,7 +399,7 @@
 				66BB2EBE229A44D800ACD9BB /* NEConfig.swift in Sources */,
 				9F63C86E22AF89A3003C37EE /* PremierLeagueViewController.swift in Sources */,
 				9F9954192292F10600DE538F /* AppDelegate.swift in Sources */,
-				9F243C6622B1359100CEC172 /* UITableView+NEContent.swift in Sources */,
+				9FCB3A4B22B21DCF003439ED /* UITableView+NEContent.swift in Sources */,
 				9F63C87422AF8A53003C37EE /* BundesLigaViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
