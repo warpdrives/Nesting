@@ -20,6 +20,7 @@ import UIKit
 class NEMonitor {
     private init() {}
     private static var _shared: NEMonitor?
+    public weak var delegate: NELinkage?
     
     class func shared() -> NEMonitor {
         guard let instance = _shared else {
@@ -40,6 +41,11 @@ class NEMonitor {
         scrollMonitor = NEMonitor._scrollMonitorProperty[ne_address(instance: self)] ?? NEScrollMonitor()
     }
     
+    /// Set NELinkage protocol.
+    public func setDelegate<T: Any>(targrt: T) {
+        delegate = targrt as? NELinkage
+    }
+    
     deinit {
         ne_print("NEMonitor is released")
     }
@@ -50,7 +56,9 @@ extension NEMonitor {
     private static var _scrollMonitorProperty = [String: NEScrollMonitor]()
     var scrollMonitor: NEScrollMonitor {
         get {
-            return NEMonitor._scrollMonitorProperty[ne_address(instance: self)] ?? NEScrollMonitor()
+            let value = NEMonitor._scrollMonitorProperty[ne_address(instance: self)] ?? NEScrollMonitor()
+            value.delegate = delegate
+            return value
         }
         set(newValue) {
             NEMonitor._scrollMonitorProperty[ne_address(instance: self)] = newValue
@@ -61,6 +69,7 @@ extension NEMonitor {
 class NEScrollMonitor: NSObject {
     private let KVOKeyPath = "contentOffset"
     private var ne_monitorTableViews = [UITableView]()
+    public weak var delegate: NELinkage?
     
     /// Monitor the tableView.
     ///
@@ -82,6 +91,7 @@ class NEScrollMonitor: NSObject {
             if keyPath == KVOKeyPath {
                 let contentOffset = obj.contentOffset
                 ne_print("contentOffset is: \(contentOffset)")
+                delegate?.ne_changeHeaderView(originY: contentOffset.y)
             }
         }
     }
