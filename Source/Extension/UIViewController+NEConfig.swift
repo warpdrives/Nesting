@@ -24,8 +24,9 @@ public extension UIViewController {
         ne_print(address_pointer)
         let ne_value = NEConfig.default.ne_nestedDict[address_pointer]
         guard let theValue = ne_value else {
-            NEConfig.default.ne_nestedDict[address_pointer] = ne_value
-            return CreatNestedProtocolModel()
+            let temp = CreatNestedProtocolModel()
+            NEConfig.default.ne_nestedDict[address_pointer] = temp
+            return temp
         }
         return theValue
     }
