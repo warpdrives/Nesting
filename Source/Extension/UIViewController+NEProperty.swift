@@ -18,7 +18,9 @@
 import UIKit
 
 public extension UIViewController {
-    /// Get UINavigationBar's height
+    /// Get UINavigationBar's height.
+    ///
+    /// - Note: Read-only
     var ne_navigationBarHeight: CGFloat {
         get {
             guard let frame: CGRect = self.navigationController?.navigationBar.value(forKey: "frame") as? CGRect else {
