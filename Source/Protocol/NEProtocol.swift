@@ -45,11 +45,16 @@ extension NECreatNested where Self: UIViewController {
 protocol NEDestroy: class {
     /// Destroys the monitor for the UITableView scroll event for childViewControllers.
     func scrollMonitorDestroy()
+    /// Clear ne_nestedDict.
+    func clearConfig()
 }
 
 extension NEDestroy where Self: UIViewController {
     func scrollMonitorDestroy() {
         NEMonitor.destroy()
+    }
+    
+    func clearConfig() {
         ne_removeConfig()
     }
 }
