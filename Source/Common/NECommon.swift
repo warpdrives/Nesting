@@ -86,3 +86,8 @@ public enum NERefreshTemplate: Int {
     /// - Note: All layout effects based on refresh templates will be invalid. You need to handle the layout relationship between them yourself.
     case custom
 }
+
+/// Returns the bits of the given instance.
+public func ne_address<T: Any>(instance: T) -> String {
+    return String(format: "%p", unsafeBitCast(instance, to: Int.self))
+}
