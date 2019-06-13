@@ -50,7 +50,7 @@ extension LeagueViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard teamNames.count > 0 && teamNames.count > indexPath.row else { return UITableViewCell() }
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as? TeamCell else { return TeamCell() }
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as! TeamCell
         cell.updateTeamData(teamNames[indexPath.row])
         cell.selectionStyle = .none
         
