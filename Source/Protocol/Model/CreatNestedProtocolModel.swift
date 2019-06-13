@@ -19,4 +19,6 @@ import UIKit
 
 public class CreatNestedProtocolModel {
     var ne_backgroundColor: UIColor = .clear
+    
+    var ne_header = UIView()
 }
