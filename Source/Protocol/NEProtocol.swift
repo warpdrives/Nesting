@@ -50,5 +50,6 @@ protocol NEDestroy: class {
 extension NEDestroy where Self: UIViewController {
     func scrollMonitorDestroy() {
         NEMonitor.destroy()
+        ne_removeConfig()
     }
 }
