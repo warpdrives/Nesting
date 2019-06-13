@@ -19,7 +19,6 @@ import UIKit
 
 class NEMonitor {
     private init() {}
-//    static var `default` = NEMonitor()
     private static var _shared: NEMonitor?
     
     class func shared() -> NEMonitor {
@@ -35,7 +34,18 @@ class NEMonitor {
         _shared = nil
     }
     
-    public var scrollMonitor: NEScrollMonitor!
+    /// ScrollMonitor hash table, the value of key is the memory address.
+    private static var _scrollMonitorProperty = [String: NEScrollMonitor]()
+    var scrollMonitor: NEScrollMonitor {
+        get {
+            let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
+            return NEMonitor._scrollMonitorProperty[tmpAddress] ?? NEScrollMonitor()
+        }
+        set(newValue) {
+            let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
+            NEMonitor._scrollMonitorProperty[tmpAddress] = newValue
+        }
+    }
     
     /// Registration of rolling event monitoring.
     public func registerScrollMonitor() {
