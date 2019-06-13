@@ -31,14 +31,13 @@ class NEMonitor {
     
     class func destroy() {
         guard _shared != nil else { return }
-        NEMonitor._scrollMonitorProperty.removeAll()
+        NEMonitor._scrollMonitorProperty.removeValue(forKey: ne_address(instance: self))
         _shared = nil
     }
     
     /// Registration of rolling event monitoring.
     public func registerScrollMonitor() {
-        let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
-        scrollMonitor = NEMonitor._scrollMonitorProperty[tmpAddress] ?? NEScrollMonitor()
+        scrollMonitor = NEMonitor._scrollMonitorProperty[ne_address(instance: self)] ?? NEScrollMonitor()
     }
     
     deinit {
@@ -51,12 +50,10 @@ extension NEMonitor {
     private static var _scrollMonitorProperty = [String: NEScrollMonitor]()
     var scrollMonitor: NEScrollMonitor {
         get {
-            let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
-            return NEMonitor._scrollMonitorProperty[tmpAddress] ?? NEScrollMonitor()
+            return NEMonitor._scrollMonitorProperty[ne_address(instance: self)] ?? NEScrollMonitor()
         }
         set(newValue) {
-            let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
-            NEMonitor._scrollMonitorProperty[tmpAddress] = newValue
+            NEMonitor._scrollMonitorProperty[ne_address(instance: self)] = newValue
         }
     }
 }
