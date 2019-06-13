@@ -37,6 +37,7 @@ class NEMonitor {
     
     public var scrollMonitor: NEScrollMonitor!
     
+    /// Registration of rolling event monitoring.
     public func registerScrollMonitor() {
         scrollMonitor = NEScrollMonitor()
     }
@@ -48,9 +49,18 @@ class NEMonitor {
 
 class NEScrollMonitor: NSObject {
     private let KVOKeyPath = "contentOffset"
+    private var ne_monitorTableViews = [UITableView]()
     
+    /// Monitor the tableView.
+    ///
+    /// - Parameter tableView:  Monitored object.
     public func monitor(tableView: UITableView) {
-        tableView.addObserver(self, forKeyPath: KVOKeyPath, options: .new, context: nil)
+        /// Determine if the KVO observer has been added.
+        let ne_addKvo = ne_monitorTableViews.filter( {$0 == tableView} ).first
+        if ne_addKvo == nil {
+            ne_monitorTableViews.append(tableView)
+            tableView.addObserver(self, forKeyPath: KVOKeyPath, options: .new, context: nil)
+        }
     }
     
     override func observeValue(forKeyPath keyPath: String?,
@@ -66,6 +76,8 @@ class NEScrollMonitor: NSObject {
     }
     
     deinit {
+        ne_monitorTableViews.forEach( {$0.removeObserver(self, forKeyPath: KVOKeyPath)} )
+        ne_monitorTableViews.removeAll()
         ne_print("\(self.classForCoder) is released")
     }
 }
