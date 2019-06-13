@@ -31,9 +31,22 @@ class NEMonitor {
     
     class func destroy() {
         guard _shared != nil else { return }
+        NEMonitor._scrollMonitorProperty.removeAll()
         _shared = nil
     }
     
+    /// Registration of rolling event monitoring.
+    public func registerScrollMonitor() {
+        let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
+        scrollMonitor = NEMonitor._scrollMonitorProperty[tmpAddress] ?? NEScrollMonitor()
+    }
+    
+    deinit {
+        ne_print("NEMonitor is released")
+    }
+}
+
+extension NEMonitor {
     /// ScrollMonitor hash table, the value of key is the memory address.
     private static var _scrollMonitorProperty = [String: NEScrollMonitor]()
     var scrollMonitor: NEScrollMonitor {
@@ -45,15 +58,6 @@ class NEMonitor {
             let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
             NEMonitor._scrollMonitorProperty[tmpAddress] = newValue
         }
-    }
-    
-    /// Registration of rolling event monitoring.
-    public func registerScrollMonitor() {
-        scrollMonitor = NEScrollMonitor()
-    }
-    
-    deinit {
-        ne_print("NEMonitor is released")
     }
 }
 
