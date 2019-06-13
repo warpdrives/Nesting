@@ -16,6 +16,7 @@ class NextViewController: UIViewController {
         self.ne_backgroundColor = .orange;
 //        self.ne_creatContainerScrollView(5) // Test: Creat scrollView
         // Do any additional setup after loading the view.
+        initNestedViewController()
     }
     
 
@@ -28,8 +29,22 @@ class NextViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    private func initNestedViewController() {
+        let childControllers = [PremierLeagueViewController(),
+                                LaLigaViewController(),
+                                LegaSerieAViewController(),
+                                BundesLigaViewController(),
+                                Ligue1ViewController()]
+        let headerView = UEFAChampionsLeagueView(frame: CGRect(x: 0,
+                                                               y: ne_navigationBarHeight,
+                                                               width: UIScreen.main.bounds.size.width,
+                                                               height: 150))
+        self.ne_creatNestedContainer(childControllers, headerView)
+    }
 
     deinit {
+        NEMonitor.destroy()
         self.ne_removeConfig()
     }
 }
