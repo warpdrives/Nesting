@@ -19,6 +19,7 @@
 		9F63C87622AF8A86003C37EE /* Ligue1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63C87522AF8A86003C37EE /* Ligue1ViewController.swift */; };
 		9F63C87922AF8AFD003C37EE /* LeagueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63C87822AF8AFD003C37EE /* LeagueViewController.swift */; };
 		9F897D6C22B263E0003A8023 /* UIView+NEProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F897D6B22B263E0003A8023 /* UIView+NEProperty.swift */; };
+		9F897D6E22B3E8D8003A8023 /* UEFALeagueCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F897D6D22B3E8D8003A8023 /* UEFALeagueCategoryView.swift */; };
 		9F930B8E22AF9FCC00B9A42C /* CreatNestedProtocolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F930B8D22AF9FCC00B9A42C /* CreatNestedProtocolModel.swift */; };
 		9F9954192292F10600DE538F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9954182292F10600DE538F /* AppDelegate.swift */; };
 		9F99541B2292F10600DE538F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F99541A2292F10600DE538F /* ViewController.swift */; };
@@ -64,6 +65,7 @@
 		9F63C87522AF8A86003C37EE /* Ligue1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ligue1ViewController.swift; sourceTree = "<group>"; };
 		9F63C87822AF8AFD003C37EE /* LeagueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueViewController.swift; sourceTree = "<group>"; };
 		9F897D6B22B263E0003A8023 /* UIView+NEProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+NEProperty.swift"; sourceTree = "<group>"; };
+		9F897D6D22B3E8D8003A8023 /* UEFALeagueCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UEFALeagueCategoryView.swift; sourceTree = "<group>"; };
 		9F930B8D22AF9FCC00B9A42C /* CreatNestedProtocolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatNestedProtocolModel.swift; sourceTree = "<group>"; };
 		9F9954152292F10600DE538F /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9954182292F10600DE538F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				9F1B384722B0AFE40085E735 /* UEFAChampionsLeagueView.swift */,
+				9F897D6D22B3E8D8003A8023 /* UEFALeagueCategoryView.swift */,
 			);
 			path = HeaderView;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				9F2B2BD922943443004E9A00 /* NEProtocol.swift in Sources */,
 				9F63C87022AF89EA003C37EE /* LaLigaViewController.swift in Sources */,
 				9FF4724722AFC151005B171E /* UIViewController+NECreat.swift in Sources */,
+				9F897D6E22B3E8D8003A8023 /* UEFALeagueCategoryView.swift in Sources */,
 				9F63C87222AF8A10003C37EE /* LegaSerieAViewController.swift in Sources */,
 				9FAD444422B0FE71001F1CEB /* NEMonitor.swift in Sources */,
 				9F63C87622AF8A86003C37EE /* Ligue1ViewController.swift in Sources */,
