@@ -44,7 +44,7 @@ class NextViewController: UIViewController {
     }
 
     deinit {
-        NEMonitor.destroy()
+//        NEMonitor.destroy()
         self.ne_removeConfig()
     }
 }

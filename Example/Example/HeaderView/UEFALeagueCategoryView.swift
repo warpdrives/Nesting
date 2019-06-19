@@ -8,8 +8,20 @@
 
 import UIKit
 
-class UEFALeagueCategoryView: UIView {
+@objc public protocol UEFALeagueCategoryViewDelagete {
+    /// Click on the category title.
+    ///
+    /// - Parameter index:  The index of the category title being clicked.
+    @objc optional func selectTitleItem(index: Int)
+}
 
+class UEFALeagueCategoryView: UIView {
+    @objc weak public var delegate: UEFALeagueCategoryViewDelagete?
+
+    private var titles: [String] = []
+    private var containerScrollView: UIScrollView! 
+    private var lineView: UIView!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

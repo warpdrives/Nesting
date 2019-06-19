@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     }
     
     deinit {
-        NEMonitor.destroy()
+//        NEMonitor.destroy()
         self.ne_removeConfig()
     }
 }
@@ -42,8 +42,7 @@ private extension ViewController {
 }
 
 private extension ViewController {
-    @objc
-    private func toNextVC() {
+    @objc private func toNextVC() {
         let nextVC = NextViewController()
         self.show(nextVC, sender: nil)
     }
