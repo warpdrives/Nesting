@@ -67,14 +67,11 @@ class NEScrollMonitor: NSObject {
         }
     }
     
-    override func observeValue(forKeyPath keyPath: String?,
-                               of object: Any?,
-                               change: [NSKeyValueChangeKey : Any]?,
-                               context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if let obj = object as? UIScrollView {
             if keyPath == KVOKeyPath {
                 let contentOffset = obj.contentOffset
-                ne_print("contentOffset is: \(contentOffset)")
+                ne_print("[\(ne_address(instance: self))]contentOffset is: \(contentOffset)")
                 delegate?.ne_changeHeaderView(originY: contentOffset.y)
             }
         }
