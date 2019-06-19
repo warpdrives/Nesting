@@ -17,24 +17,8 @@
 
 import UIKit
 
-class NEMonitor {
-    private init() {}
-    private static var _shared: NEMonitor?
-    public weak var delegate: NELinkage?
-    
-    class func shared() -> NEMonitor {
-        guard let instance = _shared else {
-            _shared = NEMonitor()
-            return _shared!
-        }
-        return instance
-    }
-    
-    class func destroy() {
-        guard _shared != nil else { return }
-        NEMonitor._scrollMonitorProperty.removeValue(forKey: ne_address(instance: self))
-        _shared = nil
-    }
+public class NEMonitor {
+    private weak var delegate: NELinkage?
     
     /// Registration of rolling event monitoring.
     public func registerScrollMonitor() {
@@ -69,7 +53,7 @@ extension NEMonitor {
 class NEScrollMonitor: NSObject {
     private let KVOKeyPath = "contentOffset"
     private var ne_monitorTableViews = [UITableView]()
-    public weak var delegate: NELinkage?
+    fileprivate weak var delegate: NELinkage?
     
     /// Monitor the tableView.
     ///
