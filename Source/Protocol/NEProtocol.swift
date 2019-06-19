@@ -36,39 +36,22 @@ extension NECreatNested where Self: UIViewController {
 
     var ne_backgroundColor: UIColor {
         get {
-            return self.ne_getCurrentConfig().ne_backgroundColor
+            return ne_config.ne_backgroundColor
         }
         set {
-            self.ne_getCurrentConfig().ne_backgroundColor = newValue
+            ne_config.ne_backgroundColor = newValue
         }
     }
     
     var ne_header: UIView {
         get {
-            return self.ne_getCurrentConfig().ne_header
+            return ne_config.ne_header
         }
         set {
-            self.ne_getCurrentConfig().ne_header = newValue
+            ne_config.ne_header = newValue
         }
     }
 }
-
-//protocol NEDestroy: class {
-//    /// Destroys the monitor for the UITableView scroll event for childViewControllers.
-//    func scrollMonitorDestroy()
-//    /// Clear ne_nestedDict.
-//    func clearConfig()
-//}
-//
-//extension NEDestroy where Self: UIViewController {
-//    func scrollMonitorDestroy() {
-//        NEMonitor.destroy()
-//    }
-//
-//    func clearConfig() {
-//        ne_removeConfig()
-//    }
-//}
 
 protocol NELinkage: class {
     func ne_changeHeaderView(originY: CGFloat)
