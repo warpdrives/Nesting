@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     
     deinit {
 //        NEMonitor.destroy()
-        self.ne_removeConfig()
+//        self.ne_removeConfig()
     }
 }
 
