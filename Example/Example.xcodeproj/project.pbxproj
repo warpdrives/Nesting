@@ -20,7 +20,6 @@
 		9F63C87922AF8AFD003C37EE /* LeagueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63C87822AF8AFD003C37EE /* LeagueViewController.swift */; };
 		9F897D6C22B263E0003A8023 /* UIView+NEProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F897D6B22B263E0003A8023 /* UIView+NEProperty.swift */; };
 		9F897D6E22B3E8D8003A8023 /* UEFALeagueCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F897D6D22B3E8D8003A8023 /* UEFALeagueCategoryView.swift */; };
-		9F930B8E22AF9FCC00B9A42C /* CreatNestedProtocolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F930B8D22AF9FCC00B9A42C /* CreatNestedProtocolModel.swift */; };
 		9F9954192292F10600DE538F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9954182292F10600DE538F /* AppDelegate.swift */; };
 		9F99541B2292F10600DE538F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F99541A2292F10600DE538F /* ViewController.swift */; };
 		9F99541E2292F10600DE538F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F99541C2292F10600DE538F /* Main.storyboard */; };
@@ -30,7 +29,6 @@
 		9F9954392292F10900DE538F /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9954382292F10900DE538F /* ExampleUITests.swift */; };
 		9FAD444422B0FE71001F1CEB /* NEMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAD444322B0FE71001F1CEB /* NEMonitor.swift */; };
 		9FCB3A4B22B21DCF003439ED /* UITableView+NEContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCB3A4A22B21DCF003439ED /* UITableView+NEContent.swift */; };
-		9FF4724322AFC0E9005B171E /* UIViewController+NEConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4724222AFC0E9005B171E /* UIViewController+NEConfig.swift */; };
 		9FF4724722AFC151005B171E /* UIViewController+NECreat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4724622AFC151005B171E /* UIViewController+NECreat.swift */; };
 		9FF4724922AFC1B7005B171E /* UIViewController+NEProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4724822AFC1B7005B171E /* UIViewController+NEProperty.swift */; };
 /* End PBXBuildFile section */
@@ -66,7 +64,6 @@
 		9F63C87822AF8AFD003C37EE /* LeagueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueViewController.swift; sourceTree = "<group>"; };
 		9F897D6B22B263E0003A8023 /* UIView+NEProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+NEProperty.swift"; sourceTree = "<group>"; };
 		9F897D6D22B3E8D8003A8023 /* UEFALeagueCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UEFALeagueCategoryView.swift; sourceTree = "<group>"; };
-		9F930B8D22AF9FCC00B9A42C /* CreatNestedProtocolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatNestedProtocolModel.swift; sourceTree = "<group>"; };
 		9F9954152292F10600DE538F /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9954182292F10600DE538F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F99541A2292F10600DE538F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,7 +79,6 @@
 		9F99543A2292F10900DE538F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FAD444322B0FE71001F1CEB /* NEMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEMonitor.swift; sourceTree = "<group>"; };
 		9FCB3A4A22B21DCF003439ED /* UITableView+NEContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+NEContent.swift"; sourceTree = "<group>"; };
-		9FF4724222AFC0E9005B171E /* UIViewController+NEConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NEConfig.swift"; sourceTree = "<group>"; };
 		9FF4724622AFC151005B171E /* UIViewController+NECreat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NECreat.swift"; sourceTree = "<group>"; };
 		9FF4724822AFC1B7005B171E /* UIViewController+NEProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NEProperty.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,14 +156,6 @@
 			path = Sub;
 			sourceTree = "<group>";
 		};
-		9F930B8C22AF9FBD00B9A42C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				9F930B8D22AF9FCC00B9A42C /* CreatNestedProtocolModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		9F99540C2292F10600DE538F = {
 			isa = PBXGroup;
 			children = (
@@ -238,7 +226,6 @@
 			isa = PBXGroup;
 			children = (
 				9FCB3A4A22B21DCF003439ED /* UITableView+NEContent.swift */,
-				9FF4724222AFC0E9005B171E /* UIViewController+NEConfig.swift */,
 				9FF4724622AFC151005B171E /* UIViewController+NECreat.swift */,
 				9FF4724822AFC1B7005B171E /* UIViewController+NEProperty.swift */,
 				9F897D6B22B263E0003A8023 /* UIView+NEProperty.swift */,
@@ -249,7 +236,6 @@
 		9F99544A2292F45700DE538F /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				9F930B8C22AF9FBD00B9A42C /* Model */,
 				9F2B2BD822943443004E9A00 /* NEProtocol.swift */,
 			);
 			path = Protocol;
@@ -388,7 +374,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F930B8E22AF9FCC00B9A42C /* CreatNestedProtocolModel.swift in Sources */,
 				9F2B2BD922943443004E9A00 /* NEProtocol.swift in Sources */,
 				9F63C87022AF89EA003C37EE /* LaLigaViewController.swift in Sources */,
 				9FF4724722AFC151005B171E /* UIViewController+NECreat.swift in Sources */,
@@ -399,7 +384,6 @@
 				9F63C87922AF8AFD003C37EE /* LeagueViewController.swift in Sources */,
 				9FF4724922AFC1B7005B171E /* UIViewController+NEProperty.swift in Sources */,
 				66BB2EC0229A4B2800ACD9BB /* NextViewController.swift in Sources */,
-				9FF4724322AFC0E9005B171E /* UIViewController+NEConfig.swift in Sources */,
 				9F99541B2292F10600DE538F /* ViewController.swift in Sources */,
 				9F2B2BDE22945053004E9A00 /* NECommon.swift in Sources */,
 				9F1B384822B0AFE40085E735 /* UEFAChampionsLeagueView.swift in Sources */,
