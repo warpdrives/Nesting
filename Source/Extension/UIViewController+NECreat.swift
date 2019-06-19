@@ -26,11 +26,6 @@ extension UIViewController: NECreatNested {
     func ne_creatNestedContainer(_ childConrtoller: [UIViewController], _ headerView: UIView?, _ refreshTemplate: NERefreshTemplate = .normal) {
         ne_assert(type: .childControllerCount, value: childConrtoller.count)
         
-        /// Register scroll event monitor
-        NEMonitor.shared().registerScrollMonitor()
-        /// Set NELinkage protocol
-        NEMonitor.shared().setDelegate(targrt: self)
-        
         let screenSize = CGSize(width: UIScreen.main.bounds.size.width,
                                 height: UIScreen.main.bounds.size.height)
         let navigationBarHeight = ne_navigationBarHeight
@@ -75,7 +70,7 @@ extension UIViewController: NECreatNested {
             if view.isKind(of: UITableView.classForCoder()) {
                 let tableView = view as! UITableView
                 tableView.ne_setContent(headerView, refreshTemplate)
-                NEMonitor.shared().scrollMonitor.monitor(tableView: tableView)
+                ne_monitor.scrollMonitor.monitor(tableView: tableView)
             }
         }
     }
