@@ -46,6 +46,20 @@ public extension UIViewController {
         }
     }
     
+    var ne_config: NEConfig {
+        get {
+            guard let config = UIViewController._mapTable.object(forKey: ne_map(key: "NEConfig")) as? NEConfig else {
+                let theConfig = NEConfig()
+                UIViewController._mapTable.setObject(theConfig, forKey: ne_map(key: "NEConfig"))
+                return theConfig
+            }
+            return config
+        }
+        set(newValue) {
+            UIViewController._mapTable.setObject(newValue, forKey: ne_map(key: "NEConfig"))
+        }
+    }
+    
     /// Generate a key of type NSString.
     private func ne_map(key: String) -> NSString {
         return NSString(string: "\(key)\(ne_address(instance: self))")
