@@ -15,12 +15,9 @@
 //  THE SOFTWARE.
 
 
-import Foundation
+import UIKit
 
-class NEConfig {
-    private init() {}
-    static let `default` = NEConfig()
-    
-    /// key is vc address pointer
-    var ne_nestedDict = [String: CreatNestedProtocolModel]()
+public class NEConfig {
+    var ne_backgroundColor: UIColor = .clear
+    var ne_header = UIView()
 }
