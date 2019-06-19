@@ -30,19 +30,19 @@ public extension UIViewController {
         }
     }
     
-    /// An NSMapTable responsible for storing property.
-    private static var _mapTable = NSMapTable<NSString, AnyObject>(keyOptions: .strongMemory, valueOptions: .weakMemory)
+    /// An NSMapTable responsible for storing NEMonitor.
+    private static var _monitorProperty = NSMapTable<NSString, NEMonitor>(keyOptions: .strongMemory, valueOptions: .weakMemory)
 
     /// Monitor the scroll events of the list.
     var ne_monitor: NEMonitor {
         get {
-            let monitor: NEMonitor = UIViewController._mapTable.object(forKey: ne_address(instance: self) as NSString) as? NEMonitor ?? NEMonitor()
+            let monitor: NEMonitor = UIViewController._monitorProperty.object(forKey: ne_address(instance: self) as NSString) ?? NEMonitor()
             monitor.registerScrollMonitor()
             monitor.setDelegate(targrt: self)
             return monitor
         }
         set(newValue) {
-            UIViewController._mapTable.setObject(newValue, forKey: ne_address(instance: self) as NSString)
+            UIViewController._monitorProperty.setObject(newValue, forKey: ne_address(instance: self) as NSString)
         }
     }
 }
