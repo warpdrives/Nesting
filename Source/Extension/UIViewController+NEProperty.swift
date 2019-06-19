@@ -19,8 +19,6 @@ import UIKit
 
 public extension UIViewController {
     /// Get UINavigationBar's height.
-    ///
-    /// - Note: Read-only
     var ne_navigationBarHeight: CGFloat {
         get {
             guard let frame: CGRect = self.navigationController?.navigationBar.value(forKey: "frame") as? CGRect else {
@@ -29,6 +27,22 @@ public extension UIViewController {
             let y = frame.origin.y
             let height = frame.size.height
             return y + height
+        }
+    }
+    
+    /// An NSMapTable responsible for storing property.
+    private static var _mapTable = NSMapTable<NSString, AnyObject>(keyOptions: .strongMemory, valueOptions: .weakMemory)
+
+    /// Monitor the scroll events of the list.
+    var ne_monitor: NEMonitor {
+        get {
+            let monitor: NEMonitor = UIViewController._mapTable.object(forKey: ne_address(instance: self) as NSString) as? NEMonitor ?? NEMonitor()
+            monitor.registerScrollMonitor()
+            monitor.setDelegate(targrt: self)
+            return monitor
+        }
+        set(newValue) {
+            UIViewController._mapTable.setObject(newValue, forKey: ne_address(instance: self) as NSString)
         }
     }
 }
