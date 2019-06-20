@@ -54,5 +54,8 @@ extension NECreatNested where Self: UIViewController {
 }
 
 protocol NELinkage: class {
+    /// Change the offset of the headerView on the Y axis.
+    ///
+    /// - Parameter originY:    New Y-axis offset value.
     func ne_changeHeaderView(originY: CGFloat)
 }
