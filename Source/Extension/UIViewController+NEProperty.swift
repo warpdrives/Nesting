@@ -46,17 +46,25 @@ public extension UIViewController {
         }
     }
     
-    var ne_config: NEConfig {
+    /// The background color of the UIScrollView.
+    var ne_backgroundColor: UIColor {
         get {
-            guard let config = UIViewController._mapTable.object(forKey: ne_map(key: "NEConfig")) as? NEConfig else {
-                let theConfig = NEConfig()
-                UIViewController._mapTable.setObject(theConfig, forKey: ne_map(key: "NEConfig"))
-                return theConfig
-            }
-            return config
+            let color = UIViewController._mapTable.object(forKey: "BackgroundColor") as? UIColor ?? UIColor.clear
+            return color
         }
         set(newValue) {
-            UIViewController._mapTable.setObject(newValue, forKey: ne_map(key: "NEConfig"))
+            UIViewController._mapTable.setObject(newValue, forKey: "BackgroundColor")
+        }
+    }
+    
+    /// HeaderView of a nested view controller.
+    var ne_header: UIView {
+        get {
+            let view = UIViewController._mapTable.object(forKey: "Header") as? UIView ?? UIView()
+            return view
+        }
+        set(newValue) {
+            UIViewController._mapTable.setObject(newValue, forKey: "Header")
         }
     }
     
