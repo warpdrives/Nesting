@@ -23,7 +23,7 @@ extension UIViewController: NECreatNested {
     /// - Parameter childConrtoller:    The childControllers in the container.
     /// - Parameter headerView:         Head view that does not participate in the linkage between the bottom lists.
     /// - Parameter refreshTemplate:    Refresh style template for nested view controllers. Default normal.
-    func ne_creatNestedContainer(_ childConrtoller: [UIViewController], _ headerView: UIView?, _ refreshTemplate: NERefreshTemplate = .normal) {
+    public func ne_creatNestedContainer(_ childConrtoller: [UIViewController], _ headerView: UIView?, _ refreshTemplate: NERefreshTemplate = .normal) {
         ne_assert(type: .childControllerCount, value: childConrtoller.count)
         
         let screenSize = CGSize(width: UIScreen.main.bounds.size.width,
