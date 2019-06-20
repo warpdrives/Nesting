@@ -98,19 +98,3 @@ extension UIViewController: NELinkage {
                                  height: ne_header.frame.size.height)
     }
 }
-
-private extension UIViewController {
-    /// Get scrollView
-    private var ne_scrollView: UIScrollView {
-        get {
-            let scrollView = UIScrollView()
-            scrollView.delegate = self as? UIScrollViewDelegate
-            scrollView.backgroundColor = ne_backgroundColor
-            scrollView.isPagingEnabled = true
-            scrollView.showsHorizontalScrollIndicator = false
-            scrollView.showsVerticalScrollIndicator = false
-            scrollView.scrollsToTop = false
-            return scrollView
-        }
-    }
-}
