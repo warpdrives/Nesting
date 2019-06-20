@@ -23,33 +23,11 @@ protocol NECreatNested: class {
     /// - Parameter childConrtoller:    The childControllers in the nested viewController.
     /// - Parameter headerView:         Head view that does not participate in the linkage between the bottom lists.
     func ne_creatNestedViewController(_ childConrtoller: [UIViewController], _ headerView: UIView?)
-    
-    var ne_backgroundColor: UIColor { get set }
-    
-    var ne_header: UIView { get set }
 }
 
 extension NECreatNested where Self: UIViewController {
     func ne_creatNestedViewController(_ childConrtoller: [UIViewController], _ headerView: UIView?) {
         ne_creatNestedContainer(childConrtoller, headerView)
-    }
-
-    var ne_backgroundColor: UIColor {
-        get {
-            return ne_config.ne_backgroundColor
-        }
-        set {
-            ne_config.ne_backgroundColor = newValue
-        }
-    }
-    
-    var ne_header: UIView {
-        get {
-            return ne_config.ne_header
-        }
-        set {
-            ne_config.ne_header = newValue
-        }
     }
 }
 
