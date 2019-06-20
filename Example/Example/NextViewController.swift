@@ -40,7 +40,8 @@ class NextViewController: UIViewController {
                                                                y: ne_navigationBarHeight,
                                                                width: UIScreen.main.bounds.size.width,
                                                                height: 150))
-        self.ne_creatNestedContainer(childControllers, headerView)
+//        self.ne_creatNestedContainer(childControllers, headerView)
+        self.ne_creatNestedContainer(childControllers, headerView, callback: nil)
     }
 
     deinit {

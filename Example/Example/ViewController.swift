@@ -37,6 +37,7 @@ private extension ViewController {
         /// Initialize categoryView.
         let categoryView = UEFALeagueCategoryView(frame: CGRect(x: 0, y: 150, width: UIScreen.main.bounds.size.width, height: 44),
                                                   titles: ["PremierLeague", "LaLiga", "LegaSerieA", "BundesLiga", "Ligue1"])
+        categoryView.delegate = self
         /// Creat headerView.
         let headerView = UIView()
         headerView.backgroundColor = .white
@@ -45,12 +46,25 @@ private extension ViewController {
         headerView.addSubview(bannerView)
         headerView.addSubview(categoryView)
         /// Creat NestedViewController.
-        self.ne_creatNestedContainer(childControllers, headerView)
+        self.ne_creatNestedContainer(childControllers, headerView) { (offset) -> Void? in
+            categoryView.linkageCategoryTitle(offsetValue: offset.x)
+        }
     }
     
     private func setNavigationBar() {
         let rightBarButton = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(toNextVC))
         self.navigationItem.rightBarButtonItem = rightBarButton
+    }
+}
+
+extension ViewController: UEFALeagueCategoryViewDelagete {
+    func selectTitleItem(index: Int) {
+        /// - Note: Change the scroll offset of a nested view controller.
+        ///
+        /// - Parameter index:  The index of the childViewController or titleButton in the nested view controller.
+        /// Or
+        /// You can use the 'func linkageScrollView(offset: CGPoint, animated: Bool)'
+        linkageScrollView(index: index)
     }
 }
 
