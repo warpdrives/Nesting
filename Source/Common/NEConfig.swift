@@ -18,6 +18,25 @@
 import UIKit
 
 public class NEConfig {
-    var ne_backgroundColor: UIColor = .clear
-    var ne_header = UIView()
+    private static var _configProperty = [String: AnyObject]()
+    
+    var ne_backgroundColor: UIColor {
+        get {
+            let color = NEConfig._configProperty["BackgroundColor"] as? UIColor ?? UIColor.clear
+            return color
+        }
+        set(newValue) {
+            NEConfig._configProperty["BackgroundColor"] = newValue
+        }
+    }
+    
+    var ne_header: UIView {
+        get {
+            let view = NEConfig._configProperty["Header"] as? UIView ?? UIView()
+            return view
+        }
+        set(newValue) {
+            NEConfig._configProperty["Header"] = newValue
+        }
+    }
 }
