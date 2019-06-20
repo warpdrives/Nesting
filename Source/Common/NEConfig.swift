@@ -20,6 +20,7 @@ import UIKit
 public class NEConfig {
     private static var _configProperty = [String: AnyObject]()
     
+    /// The background color of the UIScrollView.
     var ne_backgroundColor: UIColor {
         get {
             let color = NEConfig._configProperty["BackgroundColor"] as? UIColor ?? UIColor.clear
@@ -30,6 +31,7 @@ public class NEConfig {
         }
     }
     
+    /// HeaderView of a nested view controller.
     var ne_header: UIView {
         get {
             let view = NEConfig._configProperty["Header"] as? UIView ?? UIView()
