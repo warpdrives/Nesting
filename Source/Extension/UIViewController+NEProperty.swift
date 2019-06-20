@@ -46,17 +46,6 @@ public extension UIViewController {
         }
     }
     
-    /// The background color of the UIScrollView.
-    var ne_backgroundColor: UIColor {
-        get {
-            let color = UIViewController._mapTable.object(forKey: "BackgroundColor") as? UIColor ?? UIColor.clear
-            return color
-        }
-        set(newValue) {
-            UIViewController._mapTable.setObject(newValue, forKey: "BackgroundColor")
-        }
-    }
-    
     /// HeaderView of a nested view controller.
     var ne_header: UIView {
         get {
@@ -65,6 +54,26 @@ public extension UIViewController {
         }
         set(newValue) {
             UIViewController._mapTable.setObject(newValue, forKey: "Header")
+        }
+    }
+    
+    /// The bottommost UIScrollView container of the nested view controller.
+    var ne_scrollView: UIScrollView {
+        get {
+            guard let scrollView = UIViewController._mapTable.object(forKey: "ScrollView") as? UIScrollView else {
+                let spareScrollView = UIScrollView()
+                spareScrollView.backgroundColor = .clear
+                spareScrollView.isPagingEnabled = true
+                spareScrollView.showsHorizontalScrollIndicator = false
+                spareScrollView.showsVerticalScrollIndicator = false
+                spareScrollView.scrollsToTop = false
+                UIViewController._mapTable.setObject(spareScrollView, forKey: "ScrollView")
+                return spareScrollView
+            }
+            return scrollView
+        }
+        set(newValue) {
+            UIViewController._mapTable.setObject(newValue, forKey: "ScrollView")
         }
     }
     
