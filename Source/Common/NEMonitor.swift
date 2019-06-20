@@ -53,7 +53,10 @@ extension NEMonitor {
 class NEScrollMonitor: NSObject {
     private let KVOKeyPath = "contentOffset"
     private var ne_monitorTableViews = [UITableView]()
+    private var ne_monitorScrollView = UIScrollView()
+    
     fileprivate weak var delegate: NELinkage?
+    fileprivate var callback: ((CGPoint) -> Void?)?
     
     /// Monitor the tableView.
     ///
@@ -67,19 +70,43 @@ class NEScrollMonitor: NSObject {
         }
     }
     
+    /// Monitor the scrollView.
+    ///
+    /// - Parameter scrollView:     Monitored object.
+    /// - Parameter close:          A closure containing a CGPoint type return parameter.
+    public func monitor(scrollView: UIScrollView, close: ((CGPoint) -> Void?)?) {
+        ne_monitorScrollView = scrollView
+        ne_monitorScrollView.addObserver(self, forKeyPath: KVOKeyPath, options: .new, context: nil)
+        callback = close
+    }
+    
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if let obj = object as? UIScrollView {
+        guard let obj = object as? UIScrollView else { return }
+        
+        if obj.isKind(of: UITableView.classForCoder()) {
             if keyPath == KVOKeyPath {
                 let contentOffset = obj.contentOffset
                 ne_print("[\(ne_address(instance: self))]contentOffset is: \(contentOffset)")
                 delegate?.ne_changeHeaderView(originY: contentOffset.y)
             }
+        } else if obj.isKind(of: UIScrollView.classForCoder()) {
+            let contentOffset = obj.contentOffset
+            if let theCallback = callback {
+                theCallback(contentOffset)
+            }
         }
     }
     
     deinit {
+        removeAllObserver()
+        ne_print("\(self.classForCoder) is released")
+    }
+}
+
+private extension NEScrollMonitor {
+    private func removeAllObserver() {
+        ne_monitorScrollView.removeObserver(self, forKeyPath: KVOKeyPath)
         ne_monitorTableViews.forEach( {$0.removeObserver(self, forKeyPath: KVOKeyPath)} )
         ne_monitorTableViews.removeAll()
-        ne_print("\(self.classForCoder) is released")
     }
 }
