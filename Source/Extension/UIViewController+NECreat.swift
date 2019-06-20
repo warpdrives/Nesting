@@ -23,7 +23,8 @@ extension UIViewController: NECreatNested {
     /// - Parameter childConrtoller:    The childControllers in the container.
     /// - Parameter headerView:         Head view that does not participate in the linkage between the bottom lists.
     /// - Parameter refreshTemplate:    Refresh style template for nested view controllers. Default normal.
-    public func ne_creatNestedContainer(_ childConrtoller: [UIViewController], _ headerView: UIView?, _ refreshTemplate: NERefreshTemplate = .normal) {
+    /// - Parameter callback:           Callback the scroll offset of ne_scrollView.
+    public func ne_creatNestedContainer(_ childConrtoller: [UIViewController], _ headerView: UIView?, _ refreshTemplate: NERefreshTemplate = .normal, callback: ((CGPoint) -> Void?)?) {
         ne_assert(type: .childControllerCount, value: childConrtoller.count)
         
         let screenSize = CGSize(width: UIScreen.main.bounds.size.width,
@@ -38,13 +39,15 @@ extension UIViewController: NECreatNested {
         scrollView.contentSize = CGSize(width: CGFloat(childConrtoller.count) * screenSize.width,
                                         height: screenSize.height - navigationBarHeight)
         self.view.addSubview(scrollView)
+        /// Monitor the scroll event of the scrollView.
+        ne_monitor.scrollMonitor.monitor(scrollView: scrollView, close: callback)
         
-        /// Add headerView
+        /// Add headerView.
         if let header = headerView {
             ne_header = header
             self.view.addSubview(ne_header)
         }
-        /// Add childController
+        /// Add childController.
         for i in 0..<childConrtoller.count {
             let viewController = childConrtoller[i]
             self.addChild(viewController)
@@ -53,12 +56,12 @@ extension UIViewController: NECreatNested {
                                                width: screenSize.width,
                                                height: screenSize.height)
             scrollView.addSubview(viewController.view)
-            /// Monitor tableview scroll events
+            /// Monitor tableview scroll events.
             ne_monitorTableView(viewController: viewController, headerView: headerView, refreshTemplate: refreshTemplate)
         }
     }
     
-    /// Monitor tableview scroll events
+    /// Monitor tableview scroll events.
     ///
     /// - Parameter viewController:     Nested view controller's childViewController.
     /// - Parameter headerView:         Head view that does not participate in the linkage between the bottom lists.
