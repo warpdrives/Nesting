@@ -56,7 +56,7 @@ class NEScrollMonitor: NSObject {
     private var ne_monitorScrollView = UIScrollView()
     
     fileprivate weak var delegate: NELinkage?
-    fileprivate var callback: ((CGPoint) -> Void?)?
+    fileprivate var callback: ((CGPoint) -> ())?
     
     /// Monitor the tableView.
     ///
@@ -73,11 +73,11 @@ class NEScrollMonitor: NSObject {
     /// Monitor the scrollView.
     ///
     /// - Parameter scrollView:     Monitored object.
-    /// - Parameter close:          A closure containing a CGPoint type return parameter.
-    public func monitor(scrollView: UIScrollView, close: ((CGPoint) -> Void?)?) {
+    /// - Parameter closure:        A closure containing a CGPoint type return parameter.
+    public func monitor(scrollView: UIScrollView, closure: ((CGPoint) -> ())?) {
         ne_monitorScrollView = scrollView
         ne_monitorScrollView.addObserver(self, forKeyPath: KVOKeyPath, options: .new, context: nil)
-        callback = close
+        callback = closure
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
