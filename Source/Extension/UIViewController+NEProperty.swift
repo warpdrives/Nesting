@@ -49,31 +49,31 @@ public extension UIViewController {
     /// HeaderView of a nested view controller.
     var ne_header: UIView {
         get {
-            let view = UIViewController._mapTable.object(forKey: "Header") as? UIView ?? UIView()
+            let view = UIViewController._mapTable.object(forKey: ne_map(key: "Header")) as? UIView ?? UIView()
             return view
         }
         set(newValue) {
-            UIViewController._mapTable.setObject(newValue, forKey: "Header")
+            UIViewController._mapTable.setObject(newValue, forKey: ne_map(key: "Header"))
         }
     }
     
     /// The bottommost UIScrollView container of the nested view controller.
     var ne_scrollView: UIScrollView {
         get {
-            guard let scrollView = UIViewController._mapTable.object(forKey: "ScrollView") as? UIScrollView else {
+            guard let scrollView = UIViewController._mapTable.object(forKey: ne_map(key: "ScrollView")) as? UIScrollView else {
                 let spareScrollView = UIScrollView()
                 spareScrollView.backgroundColor = .clear
                 spareScrollView.isPagingEnabled = true
                 spareScrollView.showsHorizontalScrollIndicator = false
                 spareScrollView.showsVerticalScrollIndicator = false
                 spareScrollView.scrollsToTop = false
-                UIViewController._mapTable.setObject(spareScrollView, forKey: "ScrollView")
+                UIViewController._mapTable.setObject(spareScrollView, forKey: ne_map(key: "ScrollView"))
                 return spareScrollView
             }
             return scrollView
         }
         set(newValue) {
-            UIViewController._mapTable.setObject(newValue, forKey: "ScrollView")
+            UIViewController._mapTable.setObject(newValue, forKey: ne_map(key: "ScrollView"))
         }
     }
     
