@@ -224,10 +224,10 @@
 		9F9954472292F22100DE538F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				9F897D6B22B263E0003A8023 /* UIView+NEProperty.swift */,
 				9FCB3A4A22B21DCF003439ED /* UITableView+NEContent.swift */,
 				9FF4724622AFC151005B171E /* UIViewController+NECreat.swift */,
 				9FF4724822AFC1B7005B171E /* UIViewController+NEProperty.swift */,
-				9F897D6B22B263E0003A8023 /* UIView+NEProperty.swift */,
 				9F352A3B22BB746A00DCA05A /* UIViewController+NELinkage.swift */,
 			);
 			path = Extension;
