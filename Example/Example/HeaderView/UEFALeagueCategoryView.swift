@@ -220,8 +220,8 @@ private extension UEFALeagueCategoryView {
         let nextLineAttributes = gainSelectedLineAttributes(titleWidth: nextTitleWidth, titleContainerWidth: nextBtn.frame.size.width)
         let nextLineWidth = nextLineAttributes.1
         
-        let moveDistance: CGFloat = (currentLineWidth + 30) * rate // 移动距离
-        let leftRange = currentBtn.frame.origin.x + currentLineAttributes.0 + moveDistance // 左边距离范围
+        let moveDistance: CGFloat = (currentLineWidth + 30) * rate
+        let leftRange = currentBtn.frame.origin.x + currentLineAttributes.0 + moveDistance
         let changeLineWidth = currentLineWidth + (nextLineWidth - currentLineWidth) * rate
         self.lineView.frame = CGRect(x: leftRange, y: self.lineView.frame.origin.y, width: changeLineWidth, height: self.lineView.frame.size.height)
     }

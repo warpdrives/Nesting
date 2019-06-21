@@ -46,7 +46,7 @@ private extension ViewController {
         headerView.addSubview(bannerView)
         headerView.addSubview(categoryView)
         /// Creat NestedViewController.
-        self.ne_creatNestedContainer(childControllers, headerView) { (offset) -> Void? in
+        self.ne_creatNestedContainer(childControllers, headerView) { (offset) in
             categoryView.linkageCategoryTitle(offsetValue: offset.x)
         }
     }
@@ -64,7 +64,7 @@ extension ViewController: UEFALeagueCategoryViewDelagete {
         /// - Parameter index:  The index of the childViewController or titleButton in the nested view controller.
         /// Or
         /// You can use the 'func linkageScrollView(offset: CGPoint, animated: Bool)'
-        linkageScrollView(index: index)
+        linkageScrollView(index: index, animated: false)
     }
 }
 
