@@ -67,11 +67,12 @@ private extension UEFALeagueCategoryView {
                 return
             }
             let isSelected = currentIndex == 0 ? true:false
-            let titleWidth = calculateWidth(title: title, isSelected: isSelected)
+            let currentTitleWidth = calculateWidth(title: title, isSelected: isSelected)
+            let lastTitleWidth = currentIndex > 0 ? calculateWidth(title: titles[currentIndex - 1], isSelected: currentIndex - 1 == 0 ? true:false):0
             if currentIndex > 0 {
-                titleLocation += 30 + calculateWidth(title: titles[currentIndex - 1], isSelected: isSelected)
+                titleLocation = titleLocation == 0 ? lastTitleWidth + 30:lastTitleWidth + 30 + titleLocation
             }
-            let titleContainerWidth = titleWidth + 10
+            let titleContainerWidth = currentTitleWidth + 10
             let titleBtn = UIButton()
             titleBtn.frame = CGRect(x: titleLocation, y: 0, width: titleContainerWidth, height: titleContainerHeight)
             titleBtn.setTitle(title, for: .normal)
