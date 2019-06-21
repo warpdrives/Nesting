@@ -24,7 +24,7 @@ extension UIViewController: NECreatNested {
     /// - Parameter headerView:         Head view that does not participate in the linkage between the bottom lists.
     /// - Parameter refreshTemplate:    Refresh style template for nested view controllers. Default normal.
     /// - Parameter callback:           Callback the scroll offset of ne_scrollView.
-    public func ne_creatNestedContainer(_ childConrtoller: [UIViewController], _ headerView: UIView?, _ refreshTemplate: NERefreshTemplate = .normal, callback: ((CGPoint) -> Void?)?) {
+    public func ne_creatNestedContainer(_ childConrtoller: [UIViewController], _ headerView: UIView?, _ refreshTemplate: NERefreshTemplate = .normal, callback: ((CGPoint) -> ())?) {
         ne_assert(type: .childControllerCount, value: childConrtoller.count)
         
         let screenSize = CGSize(width: UIScreen.main.bounds.size.width,
@@ -40,7 +40,7 @@ extension UIViewController: NECreatNested {
                                         height: screenSize.height - navigationBarHeight)
         self.view.addSubview(scrollView)
         /// Monitor the scroll event of the scrollView.
-        ne_monitor.scrollMonitor.monitor(scrollView: scrollView, close: callback)
+        ne_monitor.scrollMonitor.monitor(scrollView: scrollView, closure: callback)
         
         /// Add headerView.
         if let header = headerView {
