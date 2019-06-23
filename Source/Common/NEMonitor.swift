@@ -66,7 +66,7 @@ class NEScrollMonitor: NSObject {
         let ne_addKvo = ne_monitorTableViews.filter( {$0 == tableView} ).first
         if ne_addKvo == nil {
             ne_monitorTableViews.append(tableView)
-            tableView.addObserver(self, forKeyPath: KVOKeyPath, options: .new, context: nil)
+            tableView.addObserver(self, forKeyPath: KVOKeyPath, options: [.new,.old], context: nil)
         }
     }
     
@@ -84,15 +84,21 @@ class NEScrollMonitor: NSObject {
         guard let obj = object as? UIScrollView else { return }
         
         if obj.isKind(of: UITableView.classForCoder()) {
-            if keyPath == KVOKeyPath {
+            let oldOffset = change?[NSKeyValueChangeKey.newKey] as? CGPoint
+            let newOffset = change?[NSKeyValueChangeKey.oldKey] as? CGPoint
+            // Dragging , when push nextViewController ,reset offset
+            // Selected statusBar run kvo , use !(oldOffset?.y == newOffset?.y) filter
+            if keyPath == KVOKeyPath && (obj.isDragging || !(oldOffset?.y == newOffset?.y)) {
                 let contentOffset = obj.contentOffset
                 ne_print("[\(ne_address(instance: self))]contentOffset is: \(contentOffset)")
                 delegate?.ne_changeHeaderView(originY: contentOffset.y)
             }
         } else if obj.isKind(of: UIScrollView.classForCoder()) {
             let contentOffset = obj.contentOffset
-            if let theCallback = callback {
+            if let theCallback = callback,obj.isDragging {
                 theCallback(contentOffset)
+                //need  set sub scrollView header refresh frame
+                
             }
         }
     }
