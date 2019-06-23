@@ -87,15 +87,17 @@ class NEScrollMonitor: NSObject {
             let oldOffset = change?[NSKeyValueChangeKey.newKey] as? CGPoint
             let newOffset = change?[NSKeyValueChangeKey.oldKey] as? CGPoint
             // Dragging , when push nextViewController ,reset offset
+
             // Selected statusBar run kvo , use !(oldOffset?.y == newOffset?.y) filter
             if keyPath == KVOKeyPath && (obj.isDragging || !(oldOffset?.y == newOffset?.y)) {
                 let contentOffset = obj.contentOffset
                 ne_print("[\(ne_address(instance: self))]contentOffset is: \(contentOffset)")
                 delegate?.ne_changeHeaderView(originY: contentOffset.y)
             }
+           
         } else if obj.isKind(of: UIScrollView.classForCoder()) {
             let contentOffset = obj.contentOffset
-            if let theCallback = callback,obj.isDragging {
+            if let theCallback = callback {
                 theCallback(contentOffset)
                 //need  set sub scrollView header refresh frame
                 
