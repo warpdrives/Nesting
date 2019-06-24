@@ -19,36 +19,41 @@ import UIKit
 
 public class NEMonitor {
     private weak var delegate: NELinkage?
-    
     /// Registration of rolling event monitoring.
     public func registerScrollMonitor() {
-        scrollMonitor = NEMonitor._scrollMonitorProperty[ne_address(instance: self)] ?? NEScrollMonitor()
+//        scrollMonitor = NEMonitor._scrollMonitorProperty[ne_address(instance: self)] ?? NEScrollMonitor()
+        if scrollMonitor == nil {
+            scrollMonitor = NEScrollMonitor()
+            scrollMonitor?.delegate = self.delegate
+        }
+        
     }
     
     /// Set NELinkage protocol.
     public func setDelegate<T: Any>(targrt: T) {
         delegate = targrt as? NELinkage
+        scrollMonitor?.delegate = delegate
     }
-    
+    var scrollMonitor: NEScrollMonitor?
     deinit {
         ne_print("NEMonitor is released")
     }
 }
 
-extension NEMonitor {
-    /// ScrollMonitor hash table, the value of key is the memory address.
-    private static var _scrollMonitorProperty = [String: NEScrollMonitor]()
-    var scrollMonitor: NEScrollMonitor {
-        get {
-            let value = NEMonitor._scrollMonitorProperty[ne_address(instance: self)] ?? NEScrollMonitor()
-            value.delegate = delegate
-            return value
-        }
-        set(newValue) {
-            NEMonitor._scrollMonitorProperty[ne_address(instance: self)] = newValue
-        }
-    }
-}
+//extension NEMonitor {
+//    /// ScrollMonitor hash table, the value of key is the memory address.
+//    private static var _scrollMonitorProperty = [String: NEScrollMonitor]()
+//    var scrollMonitor: NEScrollMonitor {
+//        get {
+//            let value = NEMonitor._scrollMonitorProperty[ne_address(instance: self)] ?? NEScrollMonitor()
+//            value.delegate = delegate
+//            return value
+//        }
+//        set(newValue) {
+//            NEMonitor._scrollMonitorProperty[ne_address(instance: self)] = newValue
+//        }
+//    }
+//}
 
 class NEScrollMonitor: NSObject {
     private let KVOKeyPath = "contentOffset"

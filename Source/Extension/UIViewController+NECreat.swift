@@ -40,7 +40,7 @@ extension UIViewController: NECreatNested {
                                         height: screenSize.height - navigationBarHeight)
         self.view.addSubview(scrollView)
         /// Monitor the scroll event of the scrollView.
-        ne_monitor.scrollMonitor.monitor(scrollView: scrollView, closure: callback)
+        ne_monitor.scrollMonitor?.monitor(scrollView: scrollView, closure: callback)
         
         /// Add headerView.
         if let header = headerView {
@@ -73,7 +73,7 @@ extension UIViewController: NECreatNested {
             if view.isKind(of: UITableView.classForCoder()) {
                 let tableView = view as! UITableView
                 tableView.ne_setContent(headerView, refreshTemplate)
-                ne_monitor.scrollMonitor.monitor(tableView: tableView)
+                ne_monitor.scrollMonitor?.monitor(tableView: tableView)
             }
         }
     }

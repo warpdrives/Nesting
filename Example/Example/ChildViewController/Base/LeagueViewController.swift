@@ -56,11 +56,17 @@ extension LeagueViewController: UITableViewDataSource {
         
         return cell
     }
+
 }
 
 extension LeagueViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let nex = NextViewController()
+//        self.navigationController?.pushViewController(nex, animated: true)
+        ne_printmapMonitorTable()
     }
 }
 

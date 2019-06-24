@@ -11,6 +11,10 @@ import UIKit
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 11, *) {
+            UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
+        }
+        self.automaticallyAdjustsScrollViewInsets = false
         initNestedViewController()
         setNavigationBar()
     }
@@ -24,10 +28,13 @@ class ViewController: UIViewController {
 private extension ViewController {
     private func initNestedViewController() {
         /// Create a childControllers array.
+//        let childControllers = [PremierLeagueViewController(),
+//                                LaLigaViewController(),
+//                                LegaSerieAViewController(),
+//                                BundesLigaViewController(),
+//                                Ligue1ViewController()]
+
         let childControllers = [PremierLeagueViewController(),
-                                LaLigaViewController(),
-                                LegaSerieAViewController(),
-                                BundesLigaViewController(),
                                 Ligue1ViewController()]
         /// Initialize bannerView.
         let bannerView = UEFAChampionsLeagueView(frame: CGRect(x: 0,

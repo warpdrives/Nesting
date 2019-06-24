@@ -32,18 +32,35 @@ public extension UIViewController {
     
     /// An NSMapTable responsible for storing property.
     private static var _mapTable = NSMapTable<NSString, AnyObject>(keyOptions: .strongMemory, valueOptions: .weakMemory)
-
+    
+    private static var _mapMonitorTable = NSMapTable<UIViewController, AnyObject>(keyOptions: .weakMemory, valueOptions: .strongMemory)
     /// Monitor the scroll events of the UITableView.
     var ne_monitor: NEMonitor {
         get {
-            let monitor: NEMonitor = UIViewController._mapTable.object(forKey: ne_map(key: "NEMonitor")) as? NEMonitor ?? NEMonitor()
-            monitor.registerScrollMonitor()
-            monitor.setDelegate(targrt: self)
-            return monitor
+            var monitor:NEMonitor?  = UIViewController._mapMonitorTable.object(forKey: self) as? NEMonitor
+            if monitor == nil {
+                monitor = NEMonitor()
+                UIViewController._mapMonitorTable.setObject(monitor!, forKey: self)
+            }
+            monitor?.registerScrollMonitor()
+            monitor?.setDelegate(targrt: self)
+            return monitor!
         }
         set(newValue) {
-            UIViewController._mapTable.setObject(newValue, forKey: ne_map(key: "NEMonitor"))
+            UIViewController._mapMonitorTable.setObject(newValue, forKey: self)
+            //UIViewController._mapTable.setObject(newValue, forKey: ne_map(key: "NEMonitor"))
         }
+    }
+    
+    func ne_printmapMonitorTable() {
+
+        //CFGetRetainCount
+        UIViewController._mapMonitorTable.objectEnumerator()?.enumerated().forEach({ (obj) in
+            print(CFGetRetainCount(obj.element as CFTypeRef))
+        })
+        print(UIViewController._mapMonitorTable)
+        print(CFGetRetainCount(self))
+        //https://juejin.im/post/5c1644ba5188250baa558cdb
     }
     
     /// HeaderView of a nested view controller.
