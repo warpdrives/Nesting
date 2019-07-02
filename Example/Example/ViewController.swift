@@ -42,10 +42,14 @@ private extension ViewController {
         let headerView = UIView()
         headerView.backgroundColor = .white
         headerView.frame = CGRect(x: 0, y: ne_navigationBarHeight, width: UIScreen.main.bounds.size.width, height: 194)
-        /// Add bannerView & categoryView to headerView.
+        
+        
+        /// Step 1: Add bannerView & categoryView to headerView.
         headerView.addSubview(bannerView)
         headerView.addSubview(categoryView)
-        /// Creat NestedViewController.
+        /// Step 2: Set ne_categoryHeight.
+        headerView.ne_categoryHeight = categoryView.frame.size.height
+        /// Step 3: Creat NestedViewController.
         self.ne_creatNestedContainer(childControllers, headerView) { (offset) in
             categoryView.linkageCategoryTitle(offsetValue: offset.x)
         }
