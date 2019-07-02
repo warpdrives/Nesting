@@ -34,3 +34,28 @@ extension UIViewController {
         ne_scrollView.setContentOffset(offset, animated: animated)
     }
 }
+
+extension UIViewController: NELinkage {
+    func ne_changeHeaderView(originY: CGFloat) {
+        /// The headerView initial offset on the y-axis.
+        let headerInitialY: CGFloat = ne_navigationBarHeight
+        /// The initial offset of the nested view controller's scrollView on the y-axis.
+        let scrollViewInitialY: CGFloat = ne_header.frame.size.height
+        /// Height of the categoryView in the ne_header.
+        let categoryHeight: CGFloat = ne_header.ne_categoryHeight
+        var headerOffsetY: CGFloat = headerInitialY - CGFloat(fabsf(Float(scrollViewInitialY + originY)))
+        
+        /// The boundary value of the offset of the headerView on the y-axis.
+        if headerOffsetY <= -(scrollViewInitialY - headerInitialY) + categoryHeight {
+            headerOffsetY = -(scrollViewInitialY - headerInitialY) + categoryHeight
+        } else if headerOffsetY >= headerInitialY || originY <= -scrollViewInitialY {
+            headerOffsetY = headerInitialY
+        }
+        ne_print("current headerOffsetY: \(headerOffsetY), originY: \(originY)")
+        /// Update ne_header's frame.
+        ne_header.frame = CGRect(x: ne_header.frame.origin.x,
+                                 y: headerOffsetY,
+                                 width: ne_header.frame.size.width,
+                                 height: ne_header.frame.size.height)
+    }
+}
