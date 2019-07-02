@@ -21,9 +21,9 @@ public class NEMonitor {
     private weak var delegate: NELinkage?
     
     /// Registration of rolling event monitoring.
-    public func registerScrollMonitor() {
-        scrollMonitor = NEMonitor._scrollMonitorProperty[ne_address(instance: self)] ?? NEScrollMonitor()
-    }
+//    public func registerScrollMonitor() {
+//        scrollMonitor = NEMonitor._scrollMonitorProperty[ne_address(instance: self)] ?? NEScrollMonitor()
+//    }
     
     /// Set NELinkage protocol.
     public func setDelegate<T: Any>(targrt: T) {
@@ -36,16 +36,24 @@ public class NEMonitor {
 }
 
 extension NEMonitor {
+    static var scrollMonitorKey: UInt8 = 0
+    
     /// ScrollMonitor hash table, the value of key is the memory address.
-    private static var _scrollMonitorProperty = [String: NEScrollMonitor]()
+//    private static var _scrollMonitorProperty = [String: NEScrollMonitor]()
     var scrollMonitor: NEScrollMonitor {
         get {
-            let value = NEMonitor._scrollMonitorProperty[ne_address(instance: self)] ?? NEScrollMonitor()
+//            let value = NEMonitor._scrollMonitorProperty[ne_address(instance: self)] ?? NEScrollMonitor()
+//            value.delegate = delegate
+//            return value
+            let value = ne_associatedObject(base: self, key: &NEMonitor.scrollMonitorKey) {
+                return NEScrollMonitor()
+            }
             value.delegate = delegate
             return value
         }
         set(newValue) {
-            NEMonitor._scrollMonitorProperty[ne_address(instance: self)] = newValue
+//            NEMonitor._scrollMonitorProperty[ne_address(instance: self)] = newValue
+            ne_associateObject(base: self, key: &NEMonitor.scrollMonitorKey, value: newValue)
         }
     }
 }
