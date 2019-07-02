@@ -18,16 +18,28 @@
 import UIKit
 
 public extension UIView {
-    private static var _gesturePenetrateProperty = [String: Bool]()
+//    private static var _gesturePenetrateProperty = [String: Bool]()
+//
+//    /// If set to TRUE, initiates gesture penetrating, which will allow gesture events to be passed down to the bottommost view. Default FALSE.
+//    var ne_enableGesturePenetrate: Bool {
+//        get {
+//            let value = UIView._gesturePenetrateProperty[ne_address(instance: self)] ?? false
+//            return value
+//        }
+//        set(newValue) {
+//            UIView._gesturePenetrateProperty[ne_address(instance: self)] = newValue
+//        }
+//    }
+    static var ne_categoryHeightKey: UInt8 = 0
     
-    /// If set to TRUE, initiates gesture penetrating, which will allow gesture events to be passed down to the bottommost view. Default FALSE.
-    var ne_enableGesturePenetrate: Bool {
+    var ne_categoryHeight: CGFloat {
         get {
-            let value = UIView._gesturePenetrateProperty[ne_address(instance: self)] ?? false
-            return value
+            return ne_associatedValue(base: self, key: &UIView.ne_categoryHeightKey, initialiser: {
+                return 0.0
+            })
         }
         set(newValue) {
-            UIView._gesturePenetrateProperty[ne_address(instance: self)] = newValue
+            ne_associateValue(base: self, key: &UIView.ne_categoryHeightKey, value: newValue)
         }
     }
 }
