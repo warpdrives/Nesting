@@ -47,5 +47,6 @@ class NextViewController: UIViewController {
     deinit {
 //        NEMonitor.destroy()
 //        self.ne_removeConfig()
+        print("\(self.classForCoder) is released!")
     }
 }
