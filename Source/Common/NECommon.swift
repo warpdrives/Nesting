@@ -91,3 +91,20 @@ public enum NERefreshTemplate: Int {
 public func ne_address<T: Any>(instance: T) -> String {
     return String(format: "%p", unsafeBitCast(instance, to: Int.self))
 }
+
+/// Associated Objects.
+///
+/// - Note: The Getter method.
+public func ne_associatedObject<T: AnyObject>(base: AnyObject, key: UnsafePointer<UInt8>, initialiser: () -> T) -> T {
+    if let associated = objc_getAssociatedObject(base, key) as? T { return associated }
+    let associated = initialiser()
+    objc_setAssociatedObject(base, key, associated, .OBJC_ASSOCIATION_RETAIN)
+    return associated
+}
+
+/// Associated Objects.
+///
+/// - Note: The Setter method.
+public func ne_associateObject<T: AnyObject>(base: AnyObject, key: UnsafePointer<UInt8>, value: T) {
+    objc_setAssociatedObject(base, key, value, .OBJC_ASSOCIATION_RETAIN)
+}
