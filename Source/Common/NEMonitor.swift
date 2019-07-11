@@ -74,6 +74,7 @@ class NEScrollMonitor: NSObject {
         let ne_addKvo = ne_monitorTableViews.filter( {$0 == tableView} ).first
         if ne_addKvo == nil {
             ne_monitorTableViews.append(tableView)
+            tableView.delegate = self
             tableView.addObserver(self, forKeyPath: KVOKeyPath, options: [.new,.old], context: nil)
         }
     }
@@ -120,9 +121,42 @@ class NEScrollMonitor: NSObject {
 }
 
 private extension NEScrollMonitor {
+    /// Remove all Observer.
     private func removeAllObserver() {
         ne_monitorScrollView.removeObserver(self, forKeyPath: KVOKeyPath)
         ne_monitorTableViews.forEach( {$0.removeObserver(self, forKeyPath: KVOKeyPath)} )
         ne_monitorTableViews.removeAll()
+    }
+    
+    /// Synchronously update the contentOffset of all tableViews.
+    ///
+    /// - Parameter contentOffset:  Current tableView contentOffset.
+    private func updateTableViews(contentOffset: CGPoint) {
+        guard ne_monitorTableViews.count > 0 else { return }
+        ne_monitorTableViews.forEach { $0.contentOffset = contentOffset }
+    }
+}
+
+extension NEScrollMonitor: UITableViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        updateTableViews(contentOffset: scrollView.contentOffset)
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            let isStop = scrollView.isTracking && !scrollView.isDragging && !scrollView.isDecelerating
+            /// - Note: Slowly slide up and down to stop.
+            if isStop {
+                updateTableViews(contentOffset: scrollView.contentOffset)
+            }
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let isStop = !scrollView.isTracking && !scrollView.isDragging && !scrollView.isDecelerating
+        /// - Note: Fast scrolling, coast stop or fast scrolling, finger press suddenly stops.
+        if isStop {
+            updateTableViews(contentOffset: scrollView.contentOffset)
+        }
     }
 }
