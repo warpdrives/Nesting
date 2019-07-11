@@ -51,6 +51,7 @@ private extension ViewController {
         headerView.ne_categoryHeight = categoryView.frame.size.height
         /// Step 3: Creat NestedViewController.
         self.ne_creatNestedContainer(childControllers, headerView) { (offset) in
+            /// Link with your categoryView.
             categoryView.linkageCategoryTitle(offsetValue: offset.x)
         }
     }
