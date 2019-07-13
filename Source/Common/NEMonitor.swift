@@ -74,7 +74,6 @@ class NEScrollMonitor: NSObject {
         let ne_addKvo = ne_monitorTableViews.filter( {$0 == tableView} ).first
         if ne_addKvo == nil {
             ne_monitorTableViews.append(tableView)
-            tableView.delegate = self
             tableView.addObserver(self, forKeyPath: KVOKeyPath, options: [.new,.old], context: nil)
         }
     }
@@ -95,21 +94,20 @@ class NEScrollMonitor: NSObject {
         if obj.isKind(of: UITableView.classForCoder()) {
             let oldOffset = change?[NSKeyValueChangeKey.newKey] as? CGPoint
             let newOffset = change?[NSKeyValueChangeKey.oldKey] as? CGPoint
-            // Dragging , when push nextViewController ,reset offset
+            /// Dragging, when push nextViewController, reset offset.
 
-            // Selected statusBar run kvo , use !(oldOffset?.y == newOffset?.y) filter
+            /// Selected statusBar run kvo , use !(oldOffset?.y == newOffset?.y) filter.
             if keyPath == KVOKeyPath && (obj.isDragging || !(oldOffset?.y == newOffset?.y)) {
                 let contentOffset = obj.contentOffset
-                ne_print("[\(ne_address(instance: self))]contentOffset is: \(contentOffset)")
                 delegate?.ne_changeHeaderView(originY: contentOffset.y)
+                updateTableViews(syncTarget: obj)
             }
            
         } else if obj.isKind(of: UIScrollView.classForCoder()) {
             let contentOffset = obj.contentOffset
             if let theCallback = callback {
                 theCallback(contentOffset)
-                //need  set sub scrollView header refresh frame
-                
+                /// - TODO: need set sub scrollView header refresh frame.
             }
         }
     }
@@ -130,33 +128,9 @@ private extension NEScrollMonitor {
     
     /// Synchronously update the contentOffset of all tableViews.
     ///
-    /// - Parameter contentOffset:  Current tableView contentOffset.
-    private func updateTableViews(contentOffset: CGPoint) {
+    /// - Parameter syncTarget:  Synchronized target object.
+    private func updateTableViews(syncTarget: UIScrollView) {
         guard ne_monitorTableViews.count > 0 else { return }
-        ne_monitorTableViews.forEach { $0.contentOffset = contentOffset }
-    }
-}
-
-extension NEScrollMonitor: UITableViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        updateTableViews(contentOffset: scrollView.contentOffset)
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if !decelerate {
-            let isStop = scrollView.isTracking && !scrollView.isDragging && !scrollView.isDecelerating
-            /// - Note: Slowly slide up and down to stop.
-            if isStop {
-                updateTableViews(contentOffset: scrollView.contentOffset)
-            }
-        }
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let isStop = !scrollView.isTracking && !scrollView.isDragging && !scrollView.isDecelerating
-        /// - Note: Fast scrolling, coast stop or fast scrolling, finger press suddenly stops.
-        if isStop {
-            updateTableViews(contentOffset: scrollView.contentOffset)
-        }
+        ne_monitorTableViews.forEach { if $0 != syncTarget { $0.contentOffset = syncTarget.contentOffset } }
     }
 }
