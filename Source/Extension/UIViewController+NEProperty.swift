@@ -36,26 +36,15 @@ public extension UIViewController {
         static var ne_header: UInt8 = 1
         static var ne_monitor: UInt8 = 2
     }
-    
-    /// An NSMapTable responsible for storing property.
-//    private static var _mapTable = NSMapTable<NSString, AnyObject>(keyOptions: .strongMemory, valueOptions: .weakMemory)
 
     /// Monitor the scroll events of the UITableView.
     var ne_monitor: NEMonitor {
         get {
-//            let monitor: NEMonitor = UIViewController._mapTable.object(forKey: ne_map(key: "NEMonitor")) as? NEMonitor ?? NEMonitor()
-//            monitor.registerScrollMonitor()
-//            monitor.setDelegate(targrt: self)
-//            return monitor
-            let monitor: NEMonitor = ne_associatedObject(base: self, key: &NE_AssociatedKeys.ne_monitor) {
-                return NEMonitor()
-            }
-//            monitor.registerScrollMonitor()
+            let monitor: NEMonitor = ne_associatedObject(base: self, key: &NE_AssociatedKeys.ne_monitor) { return NEMonitor() }
             monitor.setDelegate(targrt: self)
             return monitor
         }
         set(newValue) {
-//            UIViewController._mapTable.setObject(newValue, forKey: ne_map(key: "NEMonitor"))
             ne_associateObject(base: self, key: &NE_AssociatedKeys.ne_monitor, value: newValue)
         }
     }
@@ -63,14 +52,11 @@ public extension UIViewController {
     /// HeaderView of a nested view controller.
     var ne_header: UIView {
         get {
-//            let view = UIViewController._mapTable.object(forKey: ne_map(key: "Header")) as? UIView ?? UIView()
-//            return view
             return ne_associatedObject(base: self, key: &NE_AssociatedKeys.ne_header, initialiser: {
                 UIView()
             })
         }
         set(newValue) {
-//            UIViewController._mapTable.setObject(newValue, forKey: ne_map(key: "Header"))
             ne_associateObject(base: self, key: &NE_AssociatedKeys.ne_header, value: newValue)
         }
     }
@@ -78,17 +64,6 @@ public extension UIViewController {
     /// The bottommost UIScrollView container of the nested view controller.
     var ne_scrollView: UIScrollView {
         get {
-//            guard let scrollView = UIViewController._mapTable.object(forKey: ne_map(key: "ScrollView")) as? UIScrollView else {
-//                let spareScrollView = UIScrollView()
-//                spareScrollView.backgroundColor = .clear
-//                spareScrollView.isPagingEnabled = true
-//                spareScrollView.showsHorizontalScrollIndicator = false
-//                spareScrollView.showsVerticalScrollIndicator = false
-//                spareScrollView.scrollsToTop = false
-//                UIViewController._mapTable.setObject(spareScrollView, forKey: ne_map(key: "ScrollView"))
-//                return spareScrollView
-//            }
-//            return scrollView
             return ne_associatedObject(base: self, key: &NE_AssociatedKeys.ne_scrollView, initialiser: {
                 let spareScrollView = UIScrollView()
                 spareScrollView.backgroundColor = .clear
@@ -96,12 +71,10 @@ public extension UIViewController {
                 spareScrollView.showsHorizontalScrollIndicator = false
                 spareScrollView.showsVerticalScrollIndicator = false
                 spareScrollView.scrollsToTop = false
-//                UIViewController._mapTable.setObject(spareScrollView, forKey: ne_map(key: "ScrollView"))
                 return spareScrollView
             })
         }
         set(newValue) {
-//            UIViewController._mapTable.setObject(newValue, forKey: ne_map(key: "ScrollView"))
             ne_associateObject(base: self, key: &NE_AssociatedKeys.ne_scrollView, value: newValue)
         }
     }
