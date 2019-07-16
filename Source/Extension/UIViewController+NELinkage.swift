@@ -43,10 +43,12 @@ extension UIViewController: NELinkage {
         let scrollViewInitialY: CGFloat = ne_header.frame.size.height
         /// Height of the categoryView in the ne_header.
         let categoryHeight: CGFloat = ne_header.ne_categoryHeight
-        var headerOffsetY: CGFloat = headerInitialY - CGFloat(fabsf(Float(scrollViewInitialY + originY)))
+        /// TableView vertical scroll offset.
+        let verticalOffset: CGFloat = CGFloat(fabsf(Float(scrollViewInitialY + originY)))
+        var headerOffsetY: CGFloat = headerInitialY - verticalOffset
         
         /// The boundary value of the offset of the headerView on the y-axis.
-        if headerOffsetY <= -(scrollViewInitialY - headerInitialY) + categoryHeight {
+        if headerOffsetY <= -(scrollViewInitialY - headerInitialY) + categoryHeight && originY > -scrollViewInitialY {
             headerOffsetY = -(scrollViewInitialY - headerInitialY) + categoryHeight
         } else if headerOffsetY >= headerInitialY || originY <= -scrollViewInitialY {
             headerOffsetY = headerInitialY
