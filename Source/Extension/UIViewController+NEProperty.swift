@@ -32,39 +32,40 @@ public extension UIViewController {
     
     /// The keys for the association.
     private struct NE_AssociatedKeys {
-        static var ne_scrollView: UInt8 = 0
-        static var ne_header: UInt8 = 1
-        static var ne_monitor: UInt8 = 2
+        static var ne_scrollViewKey: UInt8 = 0
+        static var ne_headerKey: UInt8 = 1
+        static var ne_monitorKey: UInt8 = 2
     }
 
     /// Monitor the scroll events of the UITableView.
     var ne_monitor: NEMonitor {
         get {
-            let monitor: NEMonitor = ne_associatedObject(base: self, key: &NE_AssociatedKeys.ne_monitor) { return NEMonitor() }
+            let monitor: NEMonitor = ne_associatedObject(base: self, key: &NE_AssociatedKeys.ne_monitorKey) { return NEMonitor() }
             monitor.setDelegate(targrt: self)
+            monitor.syncProperty(header: ne_header, navigationBarHeight: ne_navigationBarHeight)
             return monitor
         }
         set(newValue) {
-            ne_associateObject(base: self, key: &NE_AssociatedKeys.ne_monitor, value: newValue)
+            ne_associateObject(base: self, key: &NE_AssociatedKeys.ne_monitorKey, value: newValue)
         }
     }
     
     /// HeaderView of a nested view controller.
     var ne_header: UIView {
         get {
-            return ne_associatedObject(base: self, key: &NE_AssociatedKeys.ne_header, initialiser: {
+            return ne_associatedObject(base: self, key: &NE_AssociatedKeys.ne_headerKey, initialiser: {
                 UIView()
             })
         }
         set(newValue) {
-            ne_associateObject(base: self, key: &NE_AssociatedKeys.ne_header, value: newValue)
+            ne_associateObject(base: self, key: &NE_AssociatedKeys.ne_headerKey, value: newValue)
         }
     }
     
     /// The bottommost UIScrollView container of the nested view controller.
     var ne_scrollView: UIScrollView {
         get {
-            return ne_associatedObject(base: self, key: &NE_AssociatedKeys.ne_scrollView, initialiser: {
+            return ne_associatedObject(base: self, key: &NE_AssociatedKeys.ne_scrollViewKey, initialiser: {
                 let spareScrollView = UIScrollView()
                 spareScrollView.backgroundColor = .clear
                 spareScrollView.isPagingEnabled = true
@@ -75,7 +76,7 @@ public extension UIViewController {
             })
         }
         set(newValue) {
-            ne_associateObject(base: self, key: &NE_AssociatedKeys.ne_scrollView, value: newValue)
+            ne_associateObject(base: self, key: &NE_AssociatedKeys.ne_scrollViewKey, value: newValue)
         }
     }
     
