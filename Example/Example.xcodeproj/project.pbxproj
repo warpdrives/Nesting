@@ -31,6 +31,7 @@
 		9FCB3A4B22B21DCF003439ED /* UITableView+NEContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCB3A4A22B21DCF003439ED /* UITableView+NEContent.swift */; };
 		9FF4724722AFC151005B171E /* UIViewController+NECreat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4724622AFC151005B171E /* UIViewController+NECreat.swift */; };
 		9FF4724922AFC1B7005B171E /* UIViewController+NEProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4724822AFC1B7005B171E /* UIViewController+NEProperty.swift */; };
+		9FFF80D722DF3964000A59E7 /* NEHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF80D622DF3964000A59E7 /* NEHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		9FCB3A4A22B21DCF003439ED /* UITableView+NEContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+NEContent.swift"; sourceTree = "<group>"; };
 		9FF4724622AFC151005B171E /* UIViewController+NECreat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NECreat.swift"; sourceTree = "<group>"; };
 		9FF4724822AFC1B7005B171E /* UIViewController+NEProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NEProperty.swift"; sourceTree = "<group>"; };
+		9FFF80D622DF3964000A59E7 /* NEHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			children = (
 				9F2B2BDD22945053004E9A00 /* NECommon.swift */,
 				9FAD444322B0FE71001F1CEB /* NEMonitor.swift */,
+				9FFF80D622DF3964000A59E7 /* NEHeaderView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FFF80D722DF3964000A59E7 /* NEHeaderView.swift in Sources */,
 				9F2B2BD922943443004E9A00 /* NEProtocol.swift in Sources */,
 				9F63C87022AF89EA003C37EE /* LaLigaViewController.swift in Sources */,
 				9FF4724722AFC151005B171E /* UIViewController+NECreat.swift in Sources */,
