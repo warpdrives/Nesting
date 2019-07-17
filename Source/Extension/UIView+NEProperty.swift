@@ -18,28 +18,34 @@
 import UIKit
 
 public extension UIView {
-//    private static var _gesturePenetrateProperty = [String: Bool]()
-//
-//    /// If set to TRUE, initiates gesture penetrating, which will allow gesture events to be passed down to the bottommost view. Default FALSE.
-//    var ne_enableGesturePenetrate: Bool {
-//        get {
-//            let value = UIView._gesturePenetrateProperty[ne_address(instance: self)] ?? false
-//            return value
-//        }
-//        set(newValue) {
-//            UIView._gesturePenetrateProperty[ne_address(instance: self)] = newValue
-//        }
-//    }
-    static var ne_categoryHeightKey: UInt8 = 0
+    /// If set to TRUE, initiates gesture penetrating, which will allow gesture events to be passed down to the bottommost view. Default FALSE.
+    var ne_enableGesturePenetrate: Bool {
+        get {
+            return ne_associatedValue(base: self, key: &NE_AssociatedKeys.ne_gesturePenetrateKey, initialiser: {
+                return false
+            })
+        }
+        set(newValue) {
+            ne_associateValue(base: self, key: &NE_AssociatedKeys.ne_gesturePenetrateKey, value: newValue)
+        }
+    }
     
+    /// The height of the categoryView in the headerView of the nested view controller.
     var ne_categoryHeight: CGFloat {
         get {
-            return ne_associatedValue(base: self, key: &UIView.ne_categoryHeightKey, initialiser: {
+            return ne_associatedValue(base: self, key: &NE_AssociatedKeys.ne_categoryHeightKey, initialiser: {
                 return 0.0
             })
         }
         set(newValue) {
-            ne_associateValue(base: self, key: &UIView.ne_categoryHeightKey, value: newValue)
+            ne_associateValue(base: self, key: &NE_AssociatedKeys.ne_categoryHeightKey, value: newValue)
         }
+    }
+    
+    /// Convert to derived class of UIView.
+    ///
+    /// - Parameter derivedClass:   derived class of UIView.
+    func convert(derivedClass: AnyClass) {
+        object_setClass(self, derivedClass)
     }
 }
