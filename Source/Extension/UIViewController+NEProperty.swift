@@ -29,13 +29,6 @@ public extension UIViewController {
             return y + height
         }
     }
-    
-    /// The keys for the association.
-    private struct NE_AssociatedKeys {
-        static var ne_scrollViewKey: UInt8 = 0
-        static var ne_headerKey: UInt8 = 1
-        static var ne_monitorKey: UInt8 = 2
-    }
 
     /// Monitor the scroll events of the UITableView.
     var ne_monitor: NEMonitor {

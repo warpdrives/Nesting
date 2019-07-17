@@ -126,3 +126,11 @@ public func ne_associateValue<T: Any>(base: AnyObject, key: UnsafePointer<UInt8>
     objc_setAssociatedObject(base, key, value, .OBJC_ASSOCIATION_ASSIGN)
 }
 
+/// The keys for the association.
+public struct NE_AssociatedKeys {
+    static var ne_scrollViewKey: UInt8 = 0
+    static var ne_headerKey: UInt8 = 1
+    static var ne_monitorKey: UInt8 = 2
+    static var ne_categoryHeightKey: UInt8 = 3
+    static var ne_gesturePenetrateKey: UInt8 = 4
+}
