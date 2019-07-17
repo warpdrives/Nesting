@@ -22,7 +22,7 @@ extension UIViewController {
     ///
     /// - Parameter index:      The index(position) of the childViewController or titleButton in the nested view controller.
     /// - Parameter animate:    Whether to enable scrolling animation.
-    open func linkageScrollView(index: Int, animated: Bool = true) {
+    open func ne_linkageScrollView(index: Int, animated: Bool = true) {
         ne_scrollView.setContentOffset(CGPoint(x: CGFloat(index) * UIScreen.main.bounds.size.width, y: 0), animated: animated)
     }
     
@@ -30,7 +30,7 @@ extension UIViewController {
     ///
     /// - Parameter offset:     Scroll view offset.
     /// - Parameter animate:    Whether to enable scrolling animation.
-    open func linkageScrollView(offset: CGPoint, animated: Bool = true) {
+    open func ne_linkageScrollView(offset: CGPoint, animated: Bool = true) {
         ne_scrollView.setContentOffset(offset, animated: animated)
     }
 }
