@@ -44,6 +44,8 @@ extension UIViewController: NECreatNested {
         /// Add headerView.
         if let header = headerView {
             ne_header = header
+            /// - Note: Determine the enabled state of gesture penetrate.
+            if ne_header.ne_enableGesturePenetrate { ne_header.convert(derivedClass: NEHeaderView.self) }
             self.view.addSubview(ne_header)
         }
         
