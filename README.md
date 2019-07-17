@@ -7,7 +7,7 @@
 ![](https://img.shields.io/badge/License-Apache2.0-blue.svg)
 
 
-An excellent nested view controller for iOS
+An excellent non-invasive nested view controller for iOS.
 
 [中文说明] | [日本語の説明] | [Русское описание] | [Descrizione italiana] | [Descripción en español] | [한국어 설명]
 
