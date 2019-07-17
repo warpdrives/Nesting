@@ -19,10 +19,21 @@ import UIKit
 
 public class NEMonitor {
     private weak var delegate: NELinkage?
+    private var headerView: UIView?
+    private var navigationHeight: CGFloat = 0.0
     
     /// Set NELinkage protocol.
     public func setDelegate<T: Any>(targrt: T) {
         delegate = targrt as? NELinkage
+    }
+    
+    /// Synchronous headerView.
+    ///
+    /// - Parameter header:                 The header of nested view controller.
+    /// - Parameter navigationBarHeight:    The height of the navigation bar of the current view controller.
+    public func syncProperty(header: UIView, navigationBarHeight: CGFloat) {
+        headerView = header
+        navigationHeight = navigationBarHeight
     }
     
     deinit {
@@ -39,6 +50,8 @@ extension NEMonitor {
                 return NEScrollMonitor()
             }
             value.delegate = delegate
+            value.headerView = headerView
+            value.navigationHeight = navigationHeight
             return value
         }
         set(newValue) {
@@ -54,6 +67,8 @@ class NEScrollMonitor: NSObject {
     
     fileprivate weak var delegate: NELinkage?
     fileprivate var callback: ((CGPoint) -> ())?
+    fileprivate var headerView: UIView?
+    fileprivate var navigationHeight: CGFloat = 0.0
     
     /// Monitor the tableView.
     ///
@@ -90,6 +105,8 @@ class NEScrollMonitor: NSObject {
                 let contentOffset = obj.contentOffset
                 delegate?.ne_changeHeaderView(originY: contentOffset.y)
                 updateTableViews(syncTarget: obj)
+                /// Check contentSize.
+                adjustMinScrollAreaIfNeeded()
             }
            
         } else if obj.isKind(of: UIScrollView.classForCoder()) {
@@ -121,5 +138,23 @@ private extension NEScrollMonitor {
     private func updateTableViews(syncTarget: UIScrollView) {
         guard ne_monitorTableViews.count > 0 else { return }
         ne_monitorTableViews.forEach { if $0 != syncTarget { $0.contentOffset = syncTarget.contentOffset } }
+    }
+    
+    /// Adjust the minimum scrolling area of the tableView when needed.
+    private func adjustMinScrollAreaIfNeeded() {
+        guard ne_monitorTableViews.count > 0 else { return }
+        ne_monitorTableViews.forEach {
+            guard $0.contentSize.height < $0.frame.size.height else { return }
+            if $0.tableFooterView == nil {
+                guard let theHeaderView = headerView else { return }
+                let allElementsHeight: CGFloat = $0.contentSize.height + navigationHeight + theHeaderView.ne_categoryHeight
+                let footerHeight: CGFloat = UIScreen.main.bounds.size.height - allElementsHeight
+                let footerView = UIView()
+                footerView.frame = CGRect(x: 0, y: 0, width: $0.frame.size.width, height: footerHeight)
+                $0.tableFooterView = footerView
+            } else {
+                /// - TODO: do something...
+            }
+        }
     }
 }
