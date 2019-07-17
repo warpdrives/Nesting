@@ -31,6 +31,7 @@ extension UIViewController: NECreatNested {
                                 height: UIScreen.main.bounds.size.height)
         let navigationBarHeight = ne_navigationBarHeight
         
+        /// Get base scrollView.
         let scrollView = ne_scrollView
         scrollView.frame = CGRect(x: 0,
                                   y: navigationBarHeight,
@@ -39,14 +40,16 @@ extension UIViewController: NECreatNested {
         scrollView.contentSize = CGSize(width: CGFloat(childConrtoller.count) * screenSize.width,
                                         height: screenSize.height - navigationBarHeight)
         self.view.addSubview(scrollView)
-        /// Monitor the scroll event of the scrollView.
-        ne_monitor.scrollMonitor.monitor(scrollView: scrollView, closure: callback)
         
         /// Add headerView.
         if let header = headerView {
             ne_header = header
             self.view.addSubview(ne_header)
         }
+        
+        /// Monitor the scroll event of the scrollView.
+        ne_monitor.scrollMonitor.monitor(scrollView: scrollView, closure: callback)
+        
         /// Add childController.
         for i in 0..<childConrtoller.count {
             let viewController = childConrtoller[i]
