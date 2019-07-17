@@ -36,7 +36,7 @@ private extension ViewController {
         let categoryView = UEFALeagueCategoryView(frame: CGRect(x: 0, y: 150, width: UIScreen.main.bounds.size.width, height: 44),
                                                   titles: ["PremierLeague", "LaLiga", "LegaSerieA", "BundesLiga", "Ligue1"])
         /// Set your categoryView's delegate if existed.
-        /// - Note: If you set up a delegate, look at the code example from line 73 to line 83.
+        /// - Note: If you set up a delegate, look at the code example from line 74 to line 84.
         categoryView.delegate = self
         /// Create a headerView to add your bannerView and categoryView.
         let headerView = UIView()
