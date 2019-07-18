@@ -29,11 +29,14 @@ private extension ViewController {
                                 Ligue1ViewController()]
         /// Initialize your bannerView if existed.
         let bannerView = UEFAChampionsLeagueView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 150))
+        /// Enable GesturePenetrate if needed.
+        /// - Note: Optional.
+        bannerView.ne_enableGesturePenetrate = true
         /// Initialize your categoryView if existed.
         let categoryView = UEFALeagueCategoryView(frame: CGRect(x: 0, y: 150, width: UIScreen.main.bounds.size.width, height: 44),
                                                   titles: ["PremierLeague", "LaLiga", "LegaSerieA", "BundesLiga", "Ligue1"])
         /// Set your categoryView's delegate if existed.
-        /// - Note: If you set up a delegate, look at the code example from line 74 to line 84.
+        /// - Note: If you set up a delegate, look at the code example from line 71 to line 81.
         categoryView.delegate = self
         /// Create a headerView to add your bannerView and categoryView.
         let headerView = UIView()
@@ -48,7 +51,7 @@ private extension ViewController {
         ///
         
         /// Step 1: Set ne_categoryHeight.
-        /// - Note: When your categoryView does NOT exist, you can ignore.
+        /// - Note: If your categoryView existed, you must set ne_categoryHeight.
         headerView.ne_categoryHeight = categoryView.frame.size.height
         /// Step 2: Creat NestedViewController.
         /// - Note: ⌘ + Click [Jump to Definition] to learn more.
