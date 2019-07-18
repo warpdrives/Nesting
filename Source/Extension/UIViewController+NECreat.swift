@@ -40,7 +40,7 @@ extension UIViewController {
         if let header = headerView {
             ne_header = header
             /// - Note: Determine the enabled state of gesture penetrate.
-            if ne_header.ne_enableGesturePenetrate { ne_header.convert(derivedClass: NEHeaderView.self) }
+            ne_header.subviews.forEach { ne_determineEnabledState(targetObject: $0) }
             self.view.addSubview(ne_header)
         }
         
@@ -57,7 +57,9 @@ extension UIViewController {
             ne_monitorTableView(viewController: viewController, headerView: headerView, refreshTemplate: refreshTemplate)
         }
     }
-    
+}
+
+private extension UIViewController {
     /// Monitor tableview scroll events.
     ///
     /// - Parameter viewController:     Nested view controller's childViewController.
@@ -71,6 +73,19 @@ extension UIViewController {
                 let tableView = view as! UITableView
                 tableView.ne_setContent(headerView, refreshTemplate)
                 ne_monitor.scrollMonitor.monitor(tableView: tableView)
+            }
+        }
+    }
+    
+    /// Determine the enabled state of gesture penetrate.
+    ///
+    /// - Parameter targetObject:   Inspected object.
+    private func ne_determineEnabledState(targetObject: UIView) {
+        if targetObject.ne_enableGesturePenetrate {
+            targetObject.convert(derivedClass: NEHeaderView.self)
+            if !ne_header.isKind(of: NEHeaderView.classForCoder()) {
+                ne_header.ne_enableGesturePenetrate = true
+                ne_header.convert(derivedClass: NEHeaderView.self)
             }
         }
     }
