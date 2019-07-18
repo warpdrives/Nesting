@@ -19,9 +19,10 @@ import UIKit
 
 public class NEHeaderView: UIView {
     override public func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        guard ne_enableGesturePenetrate else { return nil }
         guard let touchView = super.hitTest(point, with: event) else { return nil }
-        if touchView.isDescendant(of: self) { return nil }
+        guard ne_enableGesturePenetrate else { return touchView }
+        /// - Note: The object that the gesture penetrates must be a descendant of NEHeaderView and cannot be a categoryView.
+        if touchView.isDescendant(of: self) && touchView.frame.size.height > self.ne_categoryHeight { return nil }
         return touchView
     }
 }
