@@ -137,7 +137,20 @@ private extension NEScrollMonitor {
     /// - Parameter syncTarget:  Synchronized target object.
     private func updateTableViews(syncTarget: UIScrollView) {
         guard ne_monitorTableViews.count > 0 else { return }
-        ne_monitorTableViews.forEach { if $0 != syncTarget { $0.contentOffset = syncTarget.contentOffset } }
+        guard let theHeaderView = headerView else { return }
+        
+        let headerCategoryHeight = -theHeaderView.ne_categoryHeight
+        let syncTargetOffsetY = syncTarget.contentOffset.y
+        ne_monitorTableViews.forEach {
+            if $0 != syncTarget {
+                let contentOffsetY = $0.contentOffset.y
+                /// - Note: Synchronize all tableViews when the tableView's content scrolls to its top.
+                if headerCategoryHeight > contentOffsetY || headerCategoryHeight > syncTargetOffsetY {
+                    let minY = min(headerCategoryHeight, syncTarget.contentOffset.y)
+                    $0.contentOffset = CGPoint(x: syncTarget.contentOffset.x, y: minY)
+                }
+            }
+        }
     }
     
     /// Adjust the minimum scrolling area of the tableView when needed.
