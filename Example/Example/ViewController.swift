@@ -28,10 +28,7 @@ private extension ViewController {
                                 BundesLigaViewController(),
                                 Ligue1ViewController()]
         /// Initialize your bannerView if existed.
-        let bannerView = UEFAChampionsLeagueView(frame: CGRect(x: 0,
-                                                               y: 0,
-                                                               width: UIScreen.main.bounds.size.width,
-                                                               height: 150))
+        let bannerView = UEFAChampionsLeagueView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 150))
         /// Initialize your categoryView if existed.
         let categoryView = UEFALeagueCategoryView(frame: CGRect(x: 0, y: 150, width: UIScreen.main.bounds.size.width, height: 44),
                                                   titles: ["PremierLeague", "LaLiga", "LegaSerieA", "BundesLiga", "Ligue1"])
@@ -41,10 +38,7 @@ private extension ViewController {
         /// Create a headerView to add your bannerView and categoryView.
         let headerView = UIView()
         headerView.backgroundColor = .white
-        headerView.frame = CGRect(x: 0,
-                                  y: ne_navigationBarHeight,
-                                  width: UIScreen.main.bounds.size.width,
-                                  height: bannerView.frame.size.height + categoryView.frame.size.height)
+        headerView.frame = CGRect(x: 0, y: ne_navigationBarHeight, width: UIScreen.main.bounds.size.width, height: bannerView.frame.size.height + categoryView.frame.size.height)
         /// Add bannerView & categoryView to headerView.
         headerView.addSubview(bannerView)
         headerView.addSubview(categoryView)

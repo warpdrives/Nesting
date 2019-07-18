@@ -25,12 +25,8 @@ public extension UITableView {
     func ne_setContent(_ headerView: UIView?, _ refreshTemplate: NERefreshTemplate) {
         guard let header = headerView else { return }
         if refreshTemplate == .normal || refreshTemplate == .overall {
-            self.contentInset = UIEdgeInsets(top: header.frame.size.height,
-                                             left: 0,
-                                             bottom: 0,
-                                             right: 0)
-            self.contentOffset = CGPoint(x: 0,
-                                         y: -header.frame.size.height)
+            self.contentInset = UIEdgeInsets(top: header.frame.size.height, left: 0, bottom: 0, right: 0)
+            self.contentOffset = CGPoint(x: 0, y: -header.frame.size.height)
         }
     }
 }

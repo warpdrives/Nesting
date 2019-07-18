@@ -44,10 +44,7 @@ public func ne_assert<T: Comparable>(type: NEAssertType, value: T) {
 /// - Parameter file:       The path to the file containing this symbol.
 /// - Parameter method:     Method name containing this symbol.
 /// - Parameter line:       The line number where the symbol appears.
-public func ne_print<T>(_ message: T,
-                        file: String = #file,
-                        method: String = #function,
-                        line: Int = #line) {
+public func ne_print<T>(_ message: T, file: String = #file, method: String = #function, line: Int = #line) {
     #if DEBUG
     print("\n[\((file as NSString).lastPathComponent) \(method)] - [Line \(line)] - \(message)\n")
     #endif

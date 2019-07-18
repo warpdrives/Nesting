@@ -55,9 +55,6 @@ extension UIViewController: NELinkage {
         }
         ne_print("current headerOffsetY: \(headerOffsetY), originY: \(originY)")
         /// Update ne_header's frame.
-        ne_header.frame = CGRect(x: ne_header.frame.origin.x,
-                                 y: headerOffsetY,
-                                 width: ne_header.frame.size.width,
-                                 height: ne_header.frame.size.height)
+        ne_header.frame = CGRect(x: ne_header.frame.origin.x, y: headerOffsetY, width: ne_header.frame.size.width, height: ne_header.frame.size.height)
     }
 }

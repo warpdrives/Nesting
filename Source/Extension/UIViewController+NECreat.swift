@@ -17,7 +17,7 @@
 
 import UIKit
 
-extension UIViewController: NECreatNested {
+extension UIViewController {
     /// Creat a nested container.
     ///
     /// - Parameter childConrtoller:    The childControllers in the container.
@@ -27,18 +27,13 @@ extension UIViewController: NECreatNested {
     public func ne_creatNestedContainer(_ childConrtoller: [UIViewController], _ headerView: UIView?, _ refreshTemplate: NERefreshTemplate = .normal, callback: ((CGPoint) -> ())?) {
         ne_assert(type: .childControllerCount, value: childConrtoller.count)
         
-        let screenSize = CGSize(width: UIScreen.main.bounds.size.width,
-                                height: UIScreen.main.bounds.size.height)
+        let screenSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
         let navigationBarHeight = ne_navigationBarHeight
         
         /// Get base scrollView.
         let scrollView = ne_scrollView
-        scrollView.frame = CGRect(x: 0,
-                                  y: navigationBarHeight,
-                                  width: screenSize.width,
-                                  height: screenSize.height)
-        scrollView.contentSize = CGSize(width: CGFloat(childConrtoller.count) * screenSize.width,
-                                        height: screenSize.height - navigationBarHeight)
+        scrollView.frame = CGRect(x: 0, y: navigationBarHeight, width: screenSize.width, height: screenSize.height)
+        scrollView.contentSize = CGSize(width: CGFloat(childConrtoller.count) * screenSize.width, height: screenSize.height - navigationBarHeight)
         self.view.addSubview(scrollView)
         
         /// Add headerView.
@@ -56,10 +51,7 @@ extension UIViewController: NECreatNested {
         for i in 0..<childConrtoller.count {
             let viewController = childConrtoller[i]
             self.addChild(viewController)
-            viewController.view.frame = CGRect(x: CGFloat(i) * screenSize.width,
-                                               y: 0,
-                                               width: screenSize.width,
-                                               height: screenSize.height)
+            viewController.view.frame = CGRect(x: CGFloat(i) * screenSize.width, y: 0, width: screenSize.width, height: screenSize.height)
             scrollView.addSubview(viewController.view)
             /// Monitor tableview scroll events.
             ne_monitorTableView(viewController: viewController, headerView: headerView, refreshTemplate: refreshTemplate)
