@@ -10,6 +10,7 @@ import UIKit
 
 class LeagueViewController: UIViewController {
     private var tableView: UITableView!
+    private var refreshControl: UIRefreshControl!
     private var teamNames = [String]()
     
     private let screenSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
@@ -35,10 +36,31 @@ private extension LeagueViewController {
         tableView.dataSource = self
         tableView.delegate = self
         self.view.addSubview(tableView)
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor(red: 15/255.0, green: 46/255.0, blue: 86/255.0, alpha: 1.0)
+        refreshControl.attributedTitle = NSAttributedString(string: "Loading")
+        refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            /// - Note: Since it is just a simple example, nothing is written here.
+        }
     }
     
     private func registerCell() {
         tableView.register(TeamCell.classForCoder(), forCellReuseIdentifier: reuseIdentifier)
+    }
+}
+
+private extension LeagueViewController {
+    @objc private func refreshTableView() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.tableView.reloadData()
+            if self.refreshControl.isRefreshing {
+                self.refreshControl.endRefreshing()
+            }
+        }
     }
 }
 
