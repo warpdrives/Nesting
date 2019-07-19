@@ -158,15 +158,16 @@ private extension NEScrollMonitor {
         guard ne_monitorTableViews.count > 0 else { return }
         ne_monitorTableViews.forEach {
             guard $0.contentSize.height < $0.frame.size.height else { return }
+            guard let theHeaderView = headerView else { return }
+            
+            let allElementsHeight: CGFloat = $0.contentSize.height + navigationHeight + theHeaderView.ne_categoryHeight
+            let footerHeight: CGFloat = UIScreen.main.bounds.size.height - allElementsHeight
             if $0.tableFooterView == nil {
-                guard let theHeaderView = headerView else { return }
-                let allElementsHeight: CGFloat = $0.contentSize.height + navigationHeight + theHeaderView.ne_categoryHeight
-                let footerHeight: CGFloat = UIScreen.main.bounds.size.height - allElementsHeight
                 let footerView = UIView()
                 footerView.frame = CGRect(x: 0, y: 0, width: $0.frame.size.width, height: footerHeight)
                 $0.tableFooterView = footerView
             } else {
-                /// - TODO: do something...
+                $0.contentSize = CGSize(width: $0.contentSize.width, height: $0.contentSize.height + footerHeight)
             }
         }
     }
