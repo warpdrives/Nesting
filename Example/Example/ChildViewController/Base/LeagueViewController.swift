@@ -56,7 +56,6 @@ private extension LeagueViewController {
 private extension LeagueViewController {
     @objc private func refreshTableView() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.tableView.reloadData()
             if self.refreshControl.isRefreshing {
                 self.refreshControl.endRefreshing()
             }
