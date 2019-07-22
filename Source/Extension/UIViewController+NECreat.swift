@@ -31,6 +31,7 @@ extension UIViewController {
         let navigationBarHeight = ne_navigationBarHeight
         
         /// Get base scrollView.
+        adaptation(scrollView: ne_scrollView)
         let scrollView = ne_scrollView
         scrollView.frame = CGRect(x: 0, y: navigationBarHeight, width: screenSize.width, height: screenSize.height)
         scrollView.contentSize = CGSize(width: CGFloat(childConrtoller.count) * screenSize.width, height: screenSize.height - navigationBarHeight)
@@ -87,6 +88,17 @@ private extension UIViewController {
                 ne_header.ne_enableGesturePenetrate = true
                 ne_header.convert(derivedClass: NEHeaderView.self)
             }
+        }
+    }
+    
+    /// Adapt UIScrollView.
+    ///
+    /// - Parameter scrollView: Adapted object.
+    private func adaptation(scrollView: UIScrollView) {
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
         }
     }
 }
