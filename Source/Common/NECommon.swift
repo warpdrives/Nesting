@@ -130,4 +130,5 @@ public struct NE_AssociatedKeys {
     static var ne_monitorKey: UInt8 = 2
     static var ne_categoryHeightKey: UInt8 = 3
     static var ne_gesturePenetrateKey: UInt8 = 4
+    static var ne_refreshTemplateKey: UInt8 = 5
 }

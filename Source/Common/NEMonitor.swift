@@ -107,6 +107,7 @@ class NEScrollMonitor: NSObject {
                 updateTableViews(syncTarget: obj)
                 /// Check contentSize.
                 adjustMinScrollAreaIfNeeded()
+               
             }
            
         } else if obj.isKind(of: UIScrollView.classForCoder()) {
@@ -115,6 +116,9 @@ class NEScrollMonitor: NSObject {
                 theCallback(contentOffset)
                 /// - TODO: need set sub scrollView header refresh frame.
             }
+           
+            lazyAddSubViewController()
+           
         }
     }
     
@@ -125,6 +129,39 @@ class NEScrollMonitor: NSObject {
 }
 
 private extension NEScrollMonitor {
+    
+    //lazy add subView
+    private func lazyAddSubViewController() {
+        let obj = self.ne_monitorScrollView
+        let contentOffset = obj.contentOffset
+        let scorllIndex = Int(contentOffset.x / obj.bounds.size.width)
+        if let rootVC = self.delegate as? UIViewController{
+            let scrollVC = rootVC.children[scorllIndex]
+            if !rootVC.ne_scrollView.subviews.contains(scrollVC.view) {
+                rootVC.ne_scrollView.addSubview(scrollVC.view)
+                let firstVC = rootVC.children.first ?? UIViewController()
+                scrollVC.view.frame = CGRect(x: CGFloat(scorllIndex) * firstVC.view.frame.width, y: 0, width: firstVC.view.frame.width, height: firstVC.view.frame.height)
+                let subviews = scrollVC.view.subviews
+                for view in subviews {
+                    if view.isKind(of: UITableView.classForCoder()) {
+                        let tableView = view as! UITableView
+                        tableView.ne_setContent(headerView, rootVC.ne_refreshTemplate)
+                        rootVC.ne_monitor.scrollMonitor.monitor(tableView: tableView)
+                        //synchronization max offset
+                        let offsetMaxTablew = self.ne_monitorTableViews.max{tableMin,tableMax in tableMin.contentOffset.y < tableMax.contentOffset.y}
+                        if let offsetMaxTablew = offsetMaxTablew {
+                            delegate?.ne_changeHeaderView(originY: offsetMaxTablew.contentOffset.y)
+                            updateTableViews(syncTarget: offsetMaxTablew)
+                            adjustMinScrollAreaIfNeeded()
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+    
     /// Remove all Observer.
     private func removeAllObserver() {
         ne_monitorScrollView.removeObserver(self, forKeyPath: KVOKeyPath)

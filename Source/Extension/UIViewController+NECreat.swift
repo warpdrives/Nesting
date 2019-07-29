@@ -47,15 +47,18 @@ extension UIViewController {
         
         /// Monitor the scroll event of the scrollView.
         ne_monitor.scrollMonitor.monitor(scrollView: scrollView, closure: callback)
-        
+        ne_refreshTemplate = refreshTemplate
         /// Add childController.
         for i in 0..<childConrtoller.count {
             let viewController = childConrtoller[i]
             self.addChild(viewController)
-            viewController.view.frame = CGRect(x: CGFloat(i) * screenSize.width, y: 0, width: screenSize.width, height: screenSize.height)
-            scrollView.addSubview(viewController.view)
+            if i == 0 {
+                viewController.view.frame = CGRect(x: CGFloat(i) * screenSize.width, y: 0, width: screenSize.width, height: screenSize.height)
+                scrollView.addSubview(viewController.view)
+                ne_monitorTableView(viewController: viewController, headerView: headerView, refreshTemplate: refreshTemplate)
+
+            }
             /// Monitor tableview scroll events.
-            ne_monitorTableView(viewController: viewController, headerView: headerView, refreshTemplate: refreshTemplate)
         }
     }
 }

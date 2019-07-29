@@ -20,6 +20,8 @@ class LeagueViewController: UIViewController {
         super.viewDidLoad()
         initElement()
         registerCell()
+        
+        print("加载了\(self.classForCoder)")
     }
     
     /// Update tableView date
