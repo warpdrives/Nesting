@@ -24,17 +24,21 @@ private let NE_ASSERT_CHILDCONTROLLERCOUNT_ERROR = "\(NE_FROM_MESSAGE) The neste
 public enum NEAssertType: Int {
     /// The count of childController is less than 2.
     case childControllerCount
+    /// Index cannot exceed the count of childControllerViews.
+    case index
 }
 
 /// Assert of Nesting
 ///
 /// - Parameter type:       Type of assert.
 /// - Parameter value:      Generics that follow the <Comparable> protocol.
-public func ne_assert<T: Comparable>(type: NEAssertType, value: T) {
+/// - Parameter otherValue: Generics that follow the <Comparable> protocol.
+public func ne_assert<T: Comparable>(type: NEAssertType, value: T, otherValue: T) {
     switch type {
     case .childControllerCount:
         let minValue: T = 1 as! T
         assert(value > minValue, NE_ASSERT_CHILDCONTROLLERCOUNT_ERROR)
+    case .index: assert(value < otherValue, "\(NE_FROM_MESSAGE) The index \(value) beyond bounds.")
     }
 }
 
@@ -130,4 +134,5 @@ public struct NE_AssociatedKeys {
     static var ne_monitorKey: UInt8 = 2
     static var ne_categoryHeightKey: UInt8 = 3
     static var ne_gesturePenetrateKey: UInt8 = 4
+    static var ne_refreshTemplateKey: UInt8 = 5
 }
