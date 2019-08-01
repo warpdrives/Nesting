@@ -43,6 +43,20 @@ public extension UIViewController {
         }
     }
     
+    /// Monitor the refreshTemplate of the UIViewController.
+    var ne_refreshTemplate: NERefreshTemplate {
+        get{
+            let number = ne_associatedValue(base: self, key: &NE_AssociatedKeys.ne_refreshTemplateKey){return NSNumber.init(value: 0)}
+            
+            let refreshTemplate:NERefreshTemplate = NERefreshTemplate(rawValue: number.intValue) ?? NERefreshTemplate.normal
+            return refreshTemplate
+        }
+        set{
+            ne_associateValue(base: self, key: &NE_AssociatedKeys.ne_refreshTemplateKey, value: NSNumber(value: newValue.rawValue))
+            //ne_associateObject(base: self, key: &NE_AssociatedKeys.ne_refreshTemplateKey, value: newValue)
+        }
+    }
+    
     /// HeaderView of a nested view controller.
     var ne_header: UIView {
         get {
