@@ -18,14 +18,41 @@
 import UIKit
 
 extension UIViewController {
-    /// Creat a nested container.
+    /// Create a nested container whose all childViewControllers will be loaded synchronously.
     ///
     /// - Parameter childConrtoller:    The childControllers in the container.
     /// - Parameter headerView:         Head view that does not participate in the linkage between the bottom lists.
+    /// - Parameter defalutIndex:       Default loaded index of childConrtoller.
     /// - Parameter refreshTemplate:    Refresh style template for nested view controllers. Default normal.
     /// - Parameter callback:           Callback the scroll offset of ne_scrollView.
-    public func ne_creatNestedContainer(_ childConrtoller: [UIViewController], _ headerView: UIView?, _ refreshTemplate: NERefreshTemplate = .normal, callback: ((CGPoint) -> ())?) {
-        ne_assert(type: .childControllerCount, value: childConrtoller.count)
+    public func ne_syncCreat(_ childConrtoller: [UIViewController], _ headerView: UIView?, _ defalutIndex: UInt = 0, _ refreshTemplate: NERefreshTemplate = .normal, callback: ((CGPoint) -> ())?) {
+        ne_creatNestedContainer(false, childConrtoller, headerView, defalutIndex, refreshTemplate, callback: callback)
+    }
+    
+    /// Create a nested container whose all childViewControllers will be loaded asynchronously.
+    ///
+    /// - Parameter childConrtoller:    The childControllers in the container.
+    /// - Parameter headerView:         Head view that does not participate in the linkage between the bottom lists.
+    /// - Parameter defalutIndex:       Default loaded index of childConrtoller.
+    /// - Parameter refreshTemplate:    Refresh style template for nested view controllers. Default normal.
+    /// - Parameter callback:           Callback the scroll offset of ne_scrollView.
+    public func ne_asyncCreat(_ childConrtoller: [UIViewController], _ headerView: UIView?, _ defalutIndex: UInt = 0, _ refreshTemplate: NERefreshTemplate = .normal, callback: ((CGPoint) -> ())?) {
+        ne_creatNestedContainer(true, childConrtoller, headerView, defalutIndex, refreshTemplate, callback: callback)
+    }
+}
+
+private extension UIViewController {
+    /// Creat a nested container.
+    ///
+    /// - Parameter isAsync:            The childControllers uses asynchronous loading.
+    /// - Parameter childConrtoller:    The childControllers in the container.
+    /// - Parameter headerView:         Head view that does not participate in the linkage between the bottom lists.
+    /// - Parameter defalutIndex:       Default loaded index of childConrtoller.
+    /// - Parameter refreshTemplate:    Refresh style template for nested view controllers. Default normal.
+    /// - Parameter callback:           Callback the scroll offset of ne_scrollView.
+    private func ne_creatNestedContainer(_ isAsync: Bool, _ childConrtoller: [UIViewController], _ headerView: UIView?, _ defalutIndex: UInt = 0, _ refreshTemplate: NERefreshTemplate = .normal, callback: ((CGPoint) -> ())?) {
+        ne_assert(type: .childControllerCount, value: childConrtoller.count, otherValue:0)
+        ne_assert(type: .index, value: defalutIndex, otherValue: UInt(childConrtoller.count))
         
         let screenSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
         let navigationBarHeight = ne_navigationBarHeight
@@ -47,20 +74,25 @@ extension UIViewController {
         
         /// Monitor the scroll event of the scrollView.
         ne_monitor.scrollMonitor.monitor(scrollView: scrollView, closure: callback)
+        /// Set refresh template.
+        ne_refreshTemplate = refreshTemplate
+        /// Set the initial offset.
+        if defalutIndex > 0 { scrollView.setContentOffset(CGPoint(x: CGFloat(defalutIndex) * screenSize.width, y: scrollView.contentOffset.y), animated: false) }
         
         /// Add childController.
         for i in 0..<childConrtoller.count {
             let viewController = childConrtoller[i]
             self.addChild(viewController)
-            viewController.view.frame = CGRect(x: CGFloat(i) * screenSize.width, y: 0, width: screenSize.width, height: screenSize.height)
-            scrollView.addSubview(viewController.view)
-            /// Monitor tableview scroll events.
-            ne_monitorTableView(viewController: viewController, headerView: headerView, refreshTemplate: refreshTemplate)
+            
+            if (isAsync && i == defalutIndex) || isAsync == false {
+                viewController.view.frame = CGRect(x: CGFloat(i) * screenSize.width, y: 0, width: screenSize.width, height: screenSize.height)
+                scrollView.addSubview(viewController.view)
+                /// Monitor tableview scroll events.
+                ne_monitorTableView(viewController: viewController, headerView: headerView, refreshTemplate: refreshTemplate)
+            }
         }
     }
-}
-
-private extension UIViewController {
+    
     /// Monitor tableview scroll events.
     ///
     /// - Parameter viewController:     Nested view controller's childViewController.
