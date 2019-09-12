@@ -51,7 +51,11 @@ extension UIViewController: NELinkage {
         if headerOffsetY <= -(scrollViewInitialY - headerInitialY) + categoryHeight && originY > -scrollViewInitialY {
             headerOffsetY = -(scrollViewInitialY - headerInitialY) + categoryHeight
         } else if headerOffsetY >= headerInitialY || originY <= -scrollViewInitialY {
-            headerOffsetY = headerInitialY
+            if ne_refreshTemplate == .normal {
+                headerOffsetY = headerInitialY
+            } else if ne_refreshTemplate == .overall {
+                headerOffsetY = verticalOffset + headerInitialY
+            }
         }
         ne_print("current headerOffsetY: \(headerOffsetY), originY: \(originY)")
         /// Update ne_header's frame.
